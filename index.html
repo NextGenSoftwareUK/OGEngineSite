@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>OGEngine — The OASIS Omniverse Game Engine</title>
+<meta name="description" content="OGEngine is the shared game runtime powering all OASIS-connected worlds. One engine, infinite worlds — shared quests, avatar SSO, NFT items, real-world discovery, and AR combat."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"/>
+<style>
+:root{
+  --bg:#030714;
+  --surface:#0a1628;
+  --surface2:#0f1e35;
+  --gold:#f0a500;
+  --gold-dim:#c47d00;
+  --cyan:#00e5ff;
+  --green:#00cc88;
+  --red:#ff4455;
+  --amber:#f0a500;
+  --violet:#8b5cf6;
+  --text:#e8f4ff;
+  --text-dim:#a8bfd8;
+  --border:rgba(240,165,0,.18);
+  --glow:rgba(240,165,0,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+
+/* ── SCANLINES ── */
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);pointer-events:none;z-index:9999}
+
+/* ── STARS ── */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(3,7,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.nav-logo{width:36px;height:36px}
+.nav-brand span{font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.08em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#000;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:900px}
+.hero-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:.25em;color:var(--gold);border:1px solid var(--gold);padding:.35rem 1.1rem;border-radius:2px;margin-bottom:1.8rem;text-transform:uppercase}
+#hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:1.4rem;text-shadow:0 0 40px var(--glow)}
+#hero h1 span{color:var(--gold)}
+.hero-sub{font-size:1.2rem;color:var(--text-dim);max-width:640px;margin:0 auto 2.8rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#000;padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s,box-shadow .2s;box-shadow:0 0 18px rgba(240,165,0,.4)}
+.btn-primary:hover{opacity:.85;box-shadow:0 0 30px rgba(240,165,0,.6)}
+.btn-outline{border:1px solid var(--gold);color:var(--gold);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s,color .2s}
+.btn-outline:hover{background:rgba(240,165,0,.12)}
+.btn-outline-cyan{border:1px solid var(--cyan);color:var(--cyan);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s}
+.btn-outline-cyan:hover{background:rgba(0,229,255,.1)}
+
+/* hero SVG network */
+#hero-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.9}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1}
+.section-inner{max-width:1180px;margin:0 auto;padding:0 2rem}
+.section-head{text-align:center;margin-bottom:3.5rem}
+.section-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase}
+.section-head h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.9rem}
+.section-head p{color:var(--text-dim);max-width:640px;margin:0 auto;font-size:1.05rem}
+
+/* ── WHAT IS OGENGINE ── */
+#what{padding:6rem 0}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.what-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-bottom:1.2rem}
+.what-text h2 span{color:var(--gold)}
+.what-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.05rem}
+.what-img{border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:0 0 40px rgba(240,165,0,.15)}
+.what-img img{width:100%;display:block}
+.stat-row{display:flex;gap:2rem;margin-top:1.8rem;flex-wrap:wrap}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.4rem;flex:1;min-width:110px;text-align:center}
+.stat-box .num{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:700;color:var(--gold)}
+.stat-box .lbl{font-size:.8rem;color:var(--text-dim);letter-spacing:.05em;margin-top:.2rem}
+
+/* ── FEATURE CARDS ── */
+#features{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(240,165,0,.04),transparent)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.feat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.6rem;transition:border-color .3s,box-shadow .3s;will-change:transform}
+.feat-card:hover{border-color:var(--gold);box-shadow:0 0 20px rgba(240,165,0,.18)}
+.feat-icon{font-size:2rem;margin-bottom:1rem}
+.feat-card h3{font-family:'Orbitron',sans-serif;font-size:.9rem;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:.7rem}
+.feat-card p{color:var(--text-dim);font-size:.95rem;line-height:1.6}
+.feat-card a{color:var(--cyan);text-decoration:none}
+.feat-card a:hover{text-decoration:underline}
+
+/* ── CONNECTED GAMES ── */
+#games{padding:6rem 0}
+.games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.game-card{background:var(--surface);border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:transform .3s,box-shadow .3s;will-change:transform}
+.game-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.game-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.game-body{padding:1.4rem}
+.game-tag{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.18em;padding:.25rem .7rem;border-radius:3px;margin-bottom:.8rem}
+.tag-green{background:rgba(0,204,136,.15);color:var(--green);border:1px solid rgba(0,204,136,.3)}
+.tag-red{background:rgba(255,68,85,.15);color:var(--red);border:1px solid rgba(255,68,85,.3)}
+.tag-amber{background:rgba(240,165,0,.15);color:var(--amber);border:1px solid rgba(240,165,0,.3)}
+.tag-cyan{background:rgba(0,229,255,.15);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
+.game-body h3{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.game-body p{color:var(--text-dim);font-size:.93rem;line-height:1.6;margin-bottom:1rem}
+.game-link{display:inline-block;font-family:'Orbitron',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:.35rem .9rem;border-radius:4px;transition:background .2s,color .2s}
+.game-link:hover{background:var(--gold);color:#000}
+.game-link.green{color:var(--green);border-color:var(--green)}
+.game-link.green:hover{background:var(--green);color:#000}
+.game-link.red{color:var(--red);border-color:var(--red)}
+.game-link.red:hover{background:var(--red);color:#fff}
+
+/* ── REAL WORLD ── */
+#realworld{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,204,136,.04),transparent)}
+.rw-header{text-align:center;margin-bottom:3rem}
+.rw-header .section-kicker{color:var(--green)}
+.rw-header h2 span{color:var(--green)}
+.rw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem}
+.rw-card{border-radius:10px;padding:2rem 1.5rem;background:var(--surface)}
+.rw-card.c-green{border:1px solid rgba(0,204,136,.4);box-shadow:inset 0 0 30px rgba(0,204,136,.06)}
+.rw-card.c-cyan{border:1px solid rgba(0,229,255,.35);box-shadow:inset 0 0 30px rgba(0,229,255,.06)}
+.rw-card.c-gold{border:1px solid rgba(240,165,0,.35);box-shadow:inset 0 0 30px rgba(240,165,0,.06)}
+.rw-card .rw-icon{font-size:2.5rem;margin-bottom:1rem}
+.rw-card h3{font-family:'Orbitron',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.8rem;letter-spacing:.06em}
+.rw-card.c-green h3{color:var(--green)}
+.rw-card.c-cyan h3{color:var(--cyan)}
+.rw-card.c-gold h3{color:var(--gold)}
+.rw-card p{color:var(--text-dim);font-size:.93rem;line-height:1.65}
+.rw-steps{display:flex;align-items:center;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rw-step{flex:1;padding:1rem 1.2rem;text-align:center;border-right:1px solid var(--border);position:relative}
+.rw-step:last-child{border-right:none}
+.rw-step .step-num{font-family:'Orbitron',sans-serif;font-size:.7rem;color:var(--green);font-weight:700;margin-bottom:.3rem}
+.rw-step .step-txt{font-size:.88rem;color:var(--text-dim);line-height:1.4}
+
+/* ── DEVELOPER SECTION ── */
+#devs{padding:6rem 0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.3),transparent)}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.dev-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;margin-bottom:1rem}
+.dev-text h2 span{color:var(--gold)}
+.dev-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.02rem}
+.code-block{background:#040c1a;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:1.4rem;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.8;color:#7dd3fc;overflow-x:auto}
+.code-block .cm{color:#4a6080}
+.code-block .kw{color:var(--cyan)}
+.code-block .str{color:var(--green)}
+.code-block .fn{color:var(--gold)}
+.code-block .pun{color:#7dd3fc}
+.tech-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.tech-pill{background:rgba(240,165,0,.1);border:1px solid rgba(240,165,0,.25);color:var(--gold);padding:.35rem .9rem;border-radius:20px;font-size:.82rem;font-family:'Share Tech Mono',monospace;letter-spacing:.06em}
+.dev-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem}
+
+/* ── ROADMAP ── */
+#roadmap{padding:6rem 0}
+.rm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.rm-tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.8rem;position:relative;will-change:transform}
+.rm-tile:hover{border-color:rgba(240,165,0,.4);box-shadow:0 0 20px rgba(240,165,0,.12)}
+.rm-tile.active{border-color:rgba(240,165,0,.5);box-shadow:inset 0 0 30px rgba(240,165,0,.07)}
+.rm-tile.soon{border-color:rgba(0,229,255,.3)}
+.rm-tile.soon:hover{border-color:var(--cyan);box-shadow:0 0 20px rgba(0,229,255,.15)}
+.rm-tile.future{border:1px dashed rgba(240,165,0,.3)}
+.rm-kicker{font-family:'Share Tech Mono',monospace;font-size:.68rem;letter-spacing:.2em;margin-bottom:.8rem;font-weight:700}
+.rm-kicker.gold{color:var(--gold)}
+.rm-kicker.cyan{color:var(--cyan)}
+.rm-kicker.dim{color:var(--text-dim)}
+.rm-tile h3{font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.7rem}
+.rm-tile p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
+.rm-badge{position:absolute;top:1.2rem;right:1.2rem;font-family:'Share Tech Mono',monospace;font-size:.62rem;padding:.2rem .55rem;border-radius:2px}
+.rm-badge.active{background:rgba(240,165,0,.2);color:var(--gold);border:1px solid rgba(240,165,0,.4)}
+.rm-badge.soon{background:rgba(0,229,255,.15);color:var(--cyan);border:1px solid rgba(0,229,255,.3)}
+
+/* ── CTA BAND ── */
+#cta{padding:6rem 0}
+.cta-box{background:linear-gradient(135deg,rgba(240,165,0,.1),rgba(0,229,255,.06));border:1px solid rgba(240,165,0,.25);border-radius:16px;padding:4rem 3rem;text-align:center;max-width:780px;margin:0 auto}
+.cta-box h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;margin-bottom:1rem}
+.cta-box h2 span{color:var(--gold)}
+.cta-box p{color:var(--text-dim);font-size:1.1rem;margin-bottom:2.2rem;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-box p:last-of-type{margin-bottom:2.2rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem 2rem 2rem;--text-dim:#a8bfd8}
+.foot-inner{max-width:1180px;margin:0 auto}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem}
+.foot-brand .logo-txt{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:.6rem}
+.foot-brand p{color:var(--text-dim);font-size:.88rem;line-height:1.7;max-width:240px;margin-bottom:1.2rem}
+.social-row{display:flex;gap:.7rem;flex-wrap:wrap}
+.social-row a{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--text-dim);border:1px solid rgba(168,191,216,.25);padding:.35rem .75rem;border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-row a:hover{border-color:var(--gold);color:var(--gold)}
+.foot-col h4{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.15em;font-weight:700;color:var(--text);margin-bottom:1rem;text-transform:uppercase}
+.foot-col ul{list-style:none}
+.foot-col ul li{margin-bottom:.5rem}
+.foot-col ul li a{color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:color .2s}
+.foot-col ul li a:hover{color:var(--gold)}
+.foot-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;gap:1rem}
+.foot-bottom p{color:var(--text-dim);font-size:.82rem}
+.foot-bottom a{color:var(--text-dim);text-decoration:none}
+.foot-bottom a:hover{color:var(--gold)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .what-grid,.dev-grid{grid-template-columns:1fr}
+  .games-grid,.rw-grid,.rm-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  nav .nav-links{display:none}
+  .rw-steps{flex-direction:column}
+  .rw-step{border-right:none;border-bottom:1px solid var(--border)}
+  .rw-step:last-child{border-bottom:none}
+}
+@media(max-width:600px){
+  .games-grid,.rw-grid,.rm-grid,.foot-grid{grid-template-columns:1fr}
+  .hero-btns,.dev-links,.cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="#f0a500" stroke-width="1.5" fill="rgba(240,165,0,.08)"/>
+      <polygon points="18,6 28,13 28,23 18,30 8,23 8,13" stroke="#f0a500" stroke-width="1.2" fill="none"/>
+      <circle cx="18" cy="18" r="4" fill="#f0a500" opacity=".9"/>
+      <line x1="18" y1="6" x2="18" y2="14" stroke="#f0a500" stroke-width="1" opacity=".5"/>
+      <line x1="28" y1="13" x2="22" y2="16" stroke="#f0a500" stroke-width="1" opacity=".5"/>
+      <line x1="28" y1="23" x2="22" y2="20" stroke="#f0a500" stroke-width="1" opacity=".5"/>
+      <line x1="18" y1="30" x2="18" y2="22" stroke="#f0a500" stroke-width="1" opacity=".5"/>
+      <line x1="8" y1="23" x2="14" y2="20" stroke="#f0a500" stroke-width="1" opacity=".5"/>
+      <line x1="8" y1="13" x2="14" y2="16" stroke="#f0a500" stroke-width="1" opacity=".5"/>
+    </svg>
+    <span>OGENGINE</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">About</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#games">Games</a></li>
+    <li><a href="#devs">Developers</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="nav-cta">GITHUB</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- radial glow -->
+    <defs>
+      <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#f0a500" stop-opacity=".18"/>
+        <stop offset="100%" stop-color="#030714" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="rg-green" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00cc88" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="rg-red" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff4455" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="rg-cyan" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00e5ff" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="glow-gold"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow-sm"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-gold" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="#f0a500" opacity=".6"/>
+      </marker>
+    </defs>
+
+    <!-- center glow -->
+    <ellipse cx="600" cy="350" rx="340" ry="240" fill="url(#rg1)"/>
+
+    <!-- Connection lines: center → nodes -->
+    <!-- → Our World (top-left) -->
+    <line x1="600" y1="350" x2="260" y2="170" stroke="#00cc88" stroke-width="1.2" stroke-dasharray="6,4" opacity=".55">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
+    </line>
+    <!-- → ODOOM (top-right) -->
+    <line x1="600" y1="350" x2="940" y2="170" stroke="#ff4455" stroke-width="1.2" stroke-dasharray="6,4" opacity=".55">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.1s" repeatCount="indefinite"/>
+    </line>
+    <!-- → OQUAKE (bottom-left) -->
+    <line x1="600" y1="350" x2="260" y2="540" stroke="#f0a500" stroke-width="1.2" stroke-dasharray="6,4" opacity=".55">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.8s" repeatCount="indefinite"/>
+    </line>
+    <!-- → Your Game (bottom-right, dashed) -->
+    <line x1="600" y1="350" x2="940" y2="540" stroke="#00e5ff" stroke-width="1" stroke-dasharray="4,6" opacity=".4">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3.2s" repeatCount="indefinite"/>
+    </line>
+
+    <!-- Data pulses along lines -->
+    <circle r="5" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L260,170"/>
+    </circle>
+    <circle r="5" fill="#ff4455" opacity=".9" filter="url(#glow-sm)">
+      <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L940,170"/>
+    </circle>
+    <circle r="5" fill="#f0a500" opacity=".9" filter="url(#glow-sm)">
+      <animateMotion dur="2.8s" repeatCount="indefinite" path="M600,350 L260,540"/>
+    </circle>
+    <circle r="4" fill="#00e5ff" opacity=".6" filter="url(#glow-sm)">
+      <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L940,540"/>
+    </circle>
+
+    <!-- Center: OGEngine hub -->
+    <ellipse cx="600" cy="350" rx="52" ry="52" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
+      <animate attributeName="rx" values="52;56;52" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="ry" values="52;56;52" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="600" cy="350" rx="36" ry="36" fill="rgba(240,165,0,.2)" stroke="#f0a500" stroke-width="2"/>
+    <text x="600" y="344" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" letter-spacing="1">OG</text>
+    <text x="600" y="358" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" letter-spacing="1">ENGINE</text>
+
+    <!-- Node: Our World -->
+    <ellipse cx="260" cy="170" rx="60" ry="38" fill="url(#rg-green)" opacity=".7"/>
+    <ellipse cx="260" cy="170" rx="44" ry="28" fill="rgba(0,204,136,.15)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="260" y="165" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00cc88" font-weight="700">OUR</text>
+    <text x="260" y="177" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00cc88" font-weight="700">WORLD</text>
+
+    <!-- Node: ODOOM -->
+    <ellipse cx="940" cy="170" rx="60" ry="38" fill="url(#rg-red)" opacity=".7"/>
+    <ellipse cx="940" cy="170" rx="44" ry="28" fill="rgba(255,68,85,.15)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="940" y="165" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#ff4455" font-weight="700">O</text>
+    <text x="940" y="177" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#ff4455" font-weight="700">DOOM</text>
+
+    <!-- Node: OQUAKE -->
+    <ellipse cx="260" cy="540" rx="60" ry="38" fill="rgba(240,165,0,.15)" opacity=".7"/>
+    <ellipse cx="260" cy="540" rx="44" ry="28" fill="rgba(240,165,0,.15)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="260" y="535" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#f0a500" font-weight="700">O</text>
+    <text x="260" y="547" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#f0a500" font-weight="700">QUAKE</text>
+
+    <!-- Node: Your Game (dashed future) -->
+    <ellipse cx="940" cy="540" rx="44" ry="28" fill="rgba(0,229,255,.06)" stroke="#00e5ff" stroke-width="1" stroke-dasharray="5,3" opacity=".6"/>
+    <text x="940" y="535" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7" fill="#00e5ff" opacity=".7" font-weight="700">YOUR</text>
+    <text x="940" y="547" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7" fill="#00e5ff" opacity=".7" font-weight="700">GAME →</text>
+
+    <!-- Orbit ring around center -->
+    <ellipse cx="600" cy="350" rx="120" ry="80" fill="none" stroke="rgba(240,165,0,.12)" stroke-width="1" stroke-dasharray="8,4">
+      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="20s" repeatCount="indefinite"/>
+    </ellipse>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-kicker">OASIS OMNIVERSE GAME RUNTIME</div>
+    <h1>One Engine.<br/><span>Infinite Worlds.</span></h1>
+    <p class="hero-sub">OGEngine is the shared game runtime that connects every OASIS world — shared quests, cross-game inventory, avatar SSO, NFT items, real-world discovery, and AR combat. Build once. Play everywhere.</p>
+    <div class="hero-btns">
+      <a href="#devs" class="btn-primary">START INTEGRATING</a>
+      <a href="#features" class="btn-outline">EXPLORE FEATURES</a>
+      <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-outline-cyan">VIEW ON GITHUB</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS OGENGINE -->
+<section id="what">
+  <div class="section-inner">
+    <div class="what-grid reveal">
+      <div class="what-text">
+        <h2>The Engine That <span>Connects Worlds</span></h2>
+        <p>OGEngine is the game-layer backbone of the OASIS Omniverse — a C/C++ runtime built on the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> that makes your game a first-class citizen of a shared, living multiverse.</p>
+        <p>When a player earns a sword in Our World, it exists in their OASIS inventory. When they find a keycard in a park, it opens a real door in ODOOM. When they gain karma by helping someone in real life, it flows into every connected world. OGEngine is what makes this possible.</p>
+        <p>Any game that integrates OGEngine gets instant access to the full OASIS player base, cross-game economy, persistent avatar identity, and the real-world discovery network — no backend infrastructure required.</p>
+        <div class="stat-row">
+          <div class="stat-box"><div class="num">3</div><div class="lbl">CONNECTED WORLDS</div></div>
+          <div class="stat-box"><div class="num">∞</div><div class="lbl">SHARED INVENTORY</div></div>
+          <div class="stat-box"><div class="num">1</div><div class="lbl">AVATAR IDENTITY</div></div>
+          <div class="stat-box"><div class="num">0</div><div class="lbl">BACKEND NEEDED</div></div>
+        </div>
+      </div>
+      <div class="what-img">
+        <img src="img/ogengine.jpg" alt="OGEngine — the OASIS Omniverse game runtime"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">CORE CAPABILITIES</div>
+      <h2>Everything a Cross-World Game Needs</h2>
+      <p>OGEngine abstracts the entire OASIS infrastructure so your game just calls the API — everything else is handled.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon">🎒</div>
+        <h3>SHARED CROSS-GAME INVENTORY</h3>
+        <p>Items, weapons, armour, powerups, and keycards persist across all connected worlds. Find a weapon in OQUAKE, use it in ODOOM. The inventory is player-owned via the <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener">WEB4 OASIS API</a>.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">👤</div>
+        <h3>AVATAR SSO</h3>
+        <p>One OASIS avatar identity across every integrated game. Players bring their name, reputation, karma, achievements, and NFT cosmetics wherever they go — no account juggling.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">📜</div>
+        <h3>CROSS-GAME QUESTS</h3>
+        <p>Quests span worlds. Start a quest in Our World, gather an item in ODOOM, complete a challenge in OQUAKE — OGEngine tracks progress across all of them simultaneously.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">⚡</div>
+        <h3>KARMA PROPAGATION</h3>
+        <p>Real-world and in-game actions earn karma that flows through every connected world. A player who helps their community in real life is recognised as a hero in-game — via the <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener">OASIS API</a>.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">💎</div>
+        <h3>NFT ITEM MINTING</h3>
+        <p>Weapons, armour, keycards, health packs, kills — any significant item or achievement can be minted as a blockchain-verified NFT. Trade on the OASIS marketplace or keep as proof of prowess.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">🗺️</div>
+        <h3>REAL-WORLD ITEM DISCOVERY</h3>
+        <p>Physical locations in parks and cities hide digital items — keycards, weapons, armour, powerups. Players must visit them in real life to claim them, then use them in ODOOM, OQUAKE, and beyond.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">🥽</div>
+        <h3>AR COMBAT (COMING SOON)</h3>
+        <p>Fight ODOOM and OQUAKE monsters in real-world parks using augmented reality. With AR glasses taking off, OGEngine will project enemies into your local park — actual exercise disguised as gaming.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">⚙️</div>
+        <h3>CACHING, BATCHING & MULTITHREADING</h3>
+        <p>Built for performance. OGEngine's STAR API Client handles request batching, intelligent caching, and multithreaded delivery so your game stays fast even with cross-world calls at scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECTED GAMES -->
+<section id="games">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">CONNECTED WORLDS</div>
+      <h2>Games Already in the Omniverse</h2>
+      <p>These titles are powered by OGEngine. Every quest, item, and avatar cross-connects between all of them.</p>
+    </div>
+    <div class="games-grid reveal">
+      <div class="game-card">
+        <img class="game-img" src="img/ogengine.jpg" alt="Our World"/>
+        <div class="game-body">
+          <span class="game-tag tag-green">OPEN WORLD RPG</span>
+          <h3>Our World</h3>
+          <p>The flagship OASIS world — a real/virtual hybrid RPG set across Earth itself. Earn karma by doing good in real life, explore locations, complete quests, and build your avatar's legacy.</p>
+          <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener" class="game-link green">EXPLORE OUR WORLD →</a>
+        </div>
+      </div>
+      <div class="game-card">
+        <img class="game-img" src="img/oland.jpg" alt="ODOOM"/>
+        <div class="game-body">
+          <span class="game-tag tag-red">FIRST-PERSON SHOOTER</span>
+          <h3>ODOOM</h3>
+          <p>Classic demon-slaying FPS reimagined with OASIS integration. Find keycards in real parks to unlock doors. Carry weapons from your shared inventory. Your kills can be minted as NFTs.</p>
+          <a href="https://odoom.oasisomniverse.one" target="_blank" rel="noopener" class="game-link red">EXPLORE ODOOM →</a>
+        </div>
+      </div>
+      <div class="game-card">
+        <img class="game-img" src="img/smartbricks.png" alt="OQUAKE"/>
+        <div class="game-body">
+          <span class="game-tag tag-amber">ARENA SHOOTER</span>
+          <h3>OQUAKE</h3>
+          <p>Lightning-fast arena combat fused with the OASIS ecosystem. Discover armour and powerups hidden in real-world locations. Cross-game achievements link with Our World and ODOOM.</p>
+          <a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener" class="game-link">EXPLORE OQUAKE →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <p style="color:var(--text-dim);margin-bottom:1.2rem">Building a game? <strong style="color:var(--text)">Integrate OGEngine and join the Omniverse.</strong></p>
+      <a href="#devs" class="btn-outline">START INTEGRATING →</a>
+    </div>
+  </div>
+</section>
+
+<!-- REAL WORLD GAMING -->
+<section id="realworld">
+  <div class="section-inner">
+    <div class="rw-header reveal">
+      <div class="section-kicker" style="color:var(--green)">THE REAL WORLD IS THE LEVEL</div>
+      <h2>Gaming That <span style="color:var(--green)">Gets You Outside</span></h2>
+      <p style="color:var(--text-dim);max-width:640px;margin:0 auto;font-size:1.05rem">OGEngine bridges the digital and physical. Real parks hide real items. Real exercise earns real rewards. Real-world good deeds power up your character — in every connected world.</p>
+    </div>
+    <div class="rw-grid reveal">
+      <div class="rw-card c-green">
+        <div class="rw-icon">🗝️</div>
+        <h3>FIND LOOT IN THE WILD</h3>
+        <p>Keycards, weapons, armour, health packs, and powerups are hidden at GPS coordinates in parks and public spaces around the world. Visit the location in real life to claim the item — then carry it into ODOOM, OQUAKE, or any connected world. The same keycard that opens a door in ODOOM might have been sitting under a park bench all along.</p>
+      </div>
+      <div class="rw-card c-cyan">
+        <div class="rw-icon">🥽</div>
+        <h3>FIGHT MONSTERS IN REAL LIFE</h3>
+        <p>Coming soon via AR integration — ODOOM and OQUAKE enemies will be projected into your local park via augmented reality. With AR glasses taking off, you'll fight demons on your morning walk and level up on your lunchtime run. Real movement, real exercise, real gameplay — the park is your arena.</p>
+      </div>
+      <div class="rw-card c-gold">
+        <div class="rw-icon">🌍</div>
+        <h3>DO GOOD, POWER UP</h3>
+        <p>The OASIS karma system rewards real-world positive actions — planting trees, volunteering, picking up litter, cycling, teaching, donating. Karma earned in the real world flows through OGEngine into every connected game, making your character more powerful the better a person you are.</p>
+      </div>
+    </div>
+    <div class="rw-steps reveal">
+      <div class="rw-step"><div class="step-num">STEP 01</div><div class="step-txt">Open the OASIS map and spot a nearby item cache</div></div>
+      <div class="rw-step"><div class="step-num">STEP 02</div><div class="step-txt">Walk, cycle or run to the real-world GPS location</div></div>
+      <div class="rw-step"><div class="step-num">STEP 03</div><div class="step-txt">Claim the keycard, weapon, or powerup to your inventory</div></div>
+      <div class="rw-step"><div class="step-num">STEP 04</div><div class="step-txt">Launch ODOOM or OQUAKE and use it — no import required</div></div>
+      <div class="rw-step"><div class="step-num">STEP 05</div><div class="step-txt">Repeat across the world, earn karma, level up your avatar</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR DEVELOPERS -->
+<section id="devs">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">FOR GAME DEVELOPERS</div>
+      <h2>Integrate Your Game in Hours</h2>
+      <p>OGEngine exposes the full OASIS ecosystem through a simple C/C++ client. Add shared inventory, avatar SSO, and karma to your game with just a few API calls.</p>
+    </div>
+    <div class="dev-grid reveal">
+      <div class="dev-text">
+        <h2>Powered by the <span>STAR API Client</span></h2>
+        <p>The STAR API Client is OGEngine's C/C++ integration layer — a drop-in library that connects your game to the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> and the broader <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a>.</p>
+        <p>No complex backend. No separate authentication system. Just link the library, configure your game ID, and your players instantly have cross-world inventory, persistent avatars, and karma that flows between worlds.</p>
+        <p>Built-in caching, batching, and multithreading mean your game stays performant even while syncing with the full Omniverse in real time.</p>
+        <div class="tech-pills">
+          <span class="tech-pill">C / C++</span>
+          <span class="tech-pill">WEB5 STAR API</span>
+          <span class="tech-pill">WEB4 OASIS API</span>
+          <span class="tech-pill">NFT MINTING</span>
+          <span class="tech-pill">WEBSOCKETS</span>
+          <span class="tech-pill">MULTITHREADED</span>
+        </div>
+        <div class="dev-links">
+          <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-primary">DOWNLOAD SDK</a>
+          <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline-cyan">API DOCS</a>
+        </div>
+      </div>
+      <div>
+        <div class="code-block">
+<span class="cm">// Include the STAR API Client</span>
+<span class="kw">#include</span> <span class="str">"OGEngine/StarClient.h"</span>
+<span class="kw">#include</span> <span class="str">"OGEngine/Inventory.h"</span>
+<span class="kw">#include</span> <span class="str">"OGEngine/Avatar.h"</span>
+
+<span class="cm">// Initialise with your game ID</span>
+<span class="fn">OGEngine</span><span class="pun">::</span><span class="fn">Init</span><span class="pun">(</span><span class="str">"your-game-id"</span><span class="pun">,</span> <span class="str">"sk_live_..."</span><span class="pun">);</span>
+
+<span class="cm">// Load the player's shared OASIS avatar</span>
+<span class="kw">auto</span> avatar <span class="pun">=</span> <span class="fn">Avatar</span><span class="pun">::</span><span class="fn">GetCurrent</span><span class="pun">();</span>
+<span class="cm">// → same avatar across Our World, ODOOM, OQUAKE</span>
+
+<span class="cm">// Check shared inventory for a keycard</span>
+<span class="kw">auto</span> items <span class="pun">=</span> <span class="fn">Inventory</span><span class="pun">::</span><span class="fn">GetItems</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">);</span>
+<span class="kw">if</span> <span class="pun">(</span>items<span class="pun">.</span><span class="fn">Has</span><span class="pun">(</span><span class="str">"keycard_level_3"</span><span class="pun">))</span> <span class="pun">{</span>
+  <span class="fn">OpenDoor</span><span class="pun">(</span>door_id<span class="pun">);</span>
+<span class="pun">}</span>
+
+<span class="cm">// Award karma for an in-game action</span>
+<span class="fn">Karma</span><span class="pun">::</span><span class="fn">Award</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"monster_killed"</span><span class="pun">,</span> <span class="num">5</span><span class="pun">);</span>
+<span class="cm">// → propagates to Our World and OQUAKE instantly</span>
+
+<span class="cm">// Mint a kill as an NFT</span>
+<span class="fn">NFT</span><span class="pun">::</span><span class="fn">Mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">ROADMAP</div>
+      <h2>What's Coming Next</h2>
+      <p>OGEngine evolves with every OASIS release. Here's what we're building toward.</p>
+    </div>
+    <div class="rm-grid">
+      <div class="rm-tile active reveal">
+        <div class="rm-badge active">IN PROGRESS</div>
+        <div class="rm-kicker gold">PHASE 1</div>
+        <h3>Core Runtime &amp; SDK</h3>
+        <p>Shared inventory, avatar SSO, karma propagation, and cross-game quests via the STAR API Client. Our World, ODOOM, and OQUAKE all connected.</p>
+      </div>
+      <div class="rm-tile active reveal">
+        <div class="rm-badge active">IN PROGRESS</div>
+        <div class="rm-kicker gold">PHASE 2</div>
+        <h3>Real-World Item Discovery</h3>
+        <p>GPS-anchored item caches hidden in parks globally. Players physically visit locations to claim weapons, armour, keycards, and powerups for use in any connected world.</p>
+      </div>
+      <div class="rm-tile soon reveal">
+        <div class="rm-badge soon">COMING SOON</div>
+        <div class="rm-kicker cyan">PHASE 3</div>
+        <h3>NFT Economy</h3>
+        <p>Significant items, rare discoveries, and boss kills minted as verifiable NFTs. Trade on the OASIS marketplace or hold as proof of achievement. Cross-game item value.</p>
+      </div>
+      <div class="rm-tile soon reveal">
+        <div class="rm-badge soon">COMING SOON</div>
+        <div class="rm-kicker cyan">PHASE 4</div>
+        <h3>AR Monster Combat</h3>
+        <p>Project ODOOM and OQUAKE enemies into real-world parks via augmented reality. Fight demons on your morning run, level up on your lunchtime walk — exercise as gameplay.</p>
+      </div>
+      <div class="rm-tile soon reveal">
+        <div class="rm-badge soon">COMING SOON</div>
+        <div class="rm-kicker cyan">PHASE 5</div>
+        <h3>Open Game SDK</h3>
+        <p>Public integration SDK for third-party game studios. Any game — any engine — can join the OASIS Omniverse, inherit the full player base, and share inventory with all connected worlds.</p>
+      </div>
+      <div class="rm-tile future reveal">
+        <div class="rm-kicker dim">ALWAYS EVOLVING</div>
+        <h3>More Worlds. More Reality.</h3>
+        <p>Cross-game guilds, shared world events, real-world tournament integration, OLAND digital land for OGEngine games, multiplayer AR battles, and much more on the horizon...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <h2>Ready to Join the <span>Omniverse?</span></h2>
+      <p>Integrate OGEngine and give your players shared quests, cross-world inventory, persistent karma, and access to the full OASIS ecosystem — from day one.</p>
+      <div class="cta-btns">
+        <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-primary">GET THE SDK</a>
+        <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline">WEB4 OASIS API</a>
+        <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline-cyan">WEB5 STAR API</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-txt">OGENGINE</div>
+        <p>The shared game runtime of the OASIS Omniverse. One engine connecting infinite worlds — real inventory, real karma, real adventure.</p>
+        <div class="social-row">
+          <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://discord.gg/oasisomniverse" target="_blank" rel="noopener">Discord</a>
+          <a href="https://twitter.com/OasisOmniverse" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>ECOSYSTEM</h4>
+        <ul>
+          <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+          <li><a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a></li>
+          <li><a href="https://odoom.oasisomniverse.one" target="_blank" rel="noopener">ODOOM</a></li>
+          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQUAKE</a></li>
+          <li><a href="https://holonet.oasisomniverse.one" target="_blank" rel="noopener">HoloNET</a></li>
+          <li><a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">OPORTAL</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>DEVELOPERS</h4>
+        <ul>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GitHub Repo</a></li>
+          <li><a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener">WEB4 OASIS API</a></li>
+          <li><a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">WEB5 STAR API</a></li>
+          <li><a href="https://starnet.oasisomniverse.one" target="_blank" rel="noopener">STARNET</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>COMMUNITY</h4>
+        <ul>
+          <li><a href="https://discord.gg/oasisomniverse" target="_blank" rel="noopener">Discord</a></li>
+          <li><a href="https://twitter.com/OasisOmniverse" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://t.me/oasisomniverse" target="_blank" rel="noopener">Telegram</a></li>
+          <li><a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank" rel="noopener">YouTube Our World Legacy</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>&copy; 2025 NextGen Software Ltd. All rights reserved.</p>
+      <p>Part of the <a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a> ecosystem.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── STARS ──
+(function(){
+  const c=document.getElementById('stars'),ctx=c.getContext('2d');
+  let stars=[];
+  function resize(){c.width=innerWidth;c.height=innerHeight;stars=Array.from({length:200},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.4+.3,o:Math.random()*.8+.2,s:Math.random()*.6+.2}))}
+  function draw(){ctx.clearRect(0,0,c.width,c.height);stars.forEach(s=>{s.o+=(.003*s.s*(Math.random()>.5?1:-1));s.o=Math.max(.1,Math.min(1,s.o));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(200,220,255,${s.o})`;ctx.fill()});requestAnimationFrame(draw)}
+  window.addEventListener('resize',resize);resize();draw();
+})();
+
+// ── SCROLL REVEAL ──
+(function(){
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
