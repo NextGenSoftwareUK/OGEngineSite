@@ -254,102 +254,73 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
 <!-- HERO -->
 <section id="hero">
   <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <!-- radial glow -->
     <defs>
       <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#f0a500" stop-opacity=".18"/>
+        <stop offset="0%" stop-color="#f0a500" stop-opacity=".15"/>
         <stop offset="100%" stop-color="#030714" stop-opacity="0"/>
       </radialGradient>
-      <radialGradient id="rg-green" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#00cc88" stop-opacity=".22"/>
-        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="rg-red" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ff4455" stop-opacity=".22"/>
-        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="rg-cyan" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#00e5ff" stop-opacity=".22"/>
-        <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
-      </radialGradient>
-      <filter id="glow-gold"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      <filter id="glow-sm"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      <marker id="arrow-gold" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-        <path d="M0,0 L6,3 L0,6 Z" fill="#f0a500" opacity=".6"/>
-      </marker>
+      <filter id="glow-gold"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <filter id="glow-sm"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
 
     <!-- center glow -->
-    <ellipse cx="600" cy="350" rx="340" ry="240" fill="url(#rg1)"/>
+    <ellipse cx="600" cy="350" rx="320" ry="220" fill="url(#rg1)"/>
 
-    <!-- Connection lines: center → nodes -->
-    <!-- → Our World (top-left) -->
-    <line x1="600" y1="350" x2="260" y2="170" stroke="#00cc88" stroke-width="1.2" stroke-dasharray="6,4" opacity=".55">
+    <!-- Connection lines: center hub → corner nodes -->
+    <line x1="600" y1="350" x2="110" y2="95" stroke="#00cc88" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
     </line>
-    <!-- → ODOOM (top-right) -->
-    <line x1="600" y1="350" x2="940" y2="170" stroke="#ff4455" stroke-width="1.2" stroke-dasharray="6,4" opacity=".55">
+    <line x1="600" y1="350" x2="1090" y2="95" stroke="#ff4455" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.1s" repeatCount="indefinite"/>
     </line>
-    <!-- → OQUAKE (bottom-left) -->
-    <line x1="600" y1="350" x2="260" y2="540" stroke="#f0a500" stroke-width="1.2" stroke-dasharray="6,4" opacity=".55">
+    <line x1="600" y1="350" x2="110" y2="605" stroke="#f0a500" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.8s" repeatCount="indefinite"/>
     </line>
-    <!-- → Your Game (bottom-right, dashed) -->
-    <line x1="600" y1="350" x2="940" y2="540" stroke="#00e5ff" stroke-width="1" stroke-dasharray="4,6" opacity=".4">
+    <line x1="600" y1="350" x2="1090" y2="605" stroke="#00e5ff" stroke-width="1" stroke-dasharray="4,6" opacity=".35">
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3.2s" repeatCount="indefinite"/>
     </line>
 
-    <!-- Data pulses along lines -->
+    <!-- Data pulses travelling outward -->
     <circle r="5" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L260,170"/>
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L110,95"/>
     </circle>
     <circle r="5" fill="#ff4455" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L940,170"/>
+      <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L1090,95"/>
     </circle>
     <circle r="5" fill="#f0a500" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.8s" repeatCount="indefinite" path="M600,350 L260,540"/>
+      <animateMotion dur="2.8s" repeatCount="indefinite" path="M600,350 L110,605"/>
     </circle>
     <circle r="4" fill="#00e5ff" opacity=".6" filter="url(#glow-sm)">
-      <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L940,540"/>
+      <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L1090,605"/>
     </circle>
 
-    <!-- Center: OGEngine hub -->
-    <ellipse cx="600" cy="350" rx="52" ry="52" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
-      <animate attributeName="rx" values="52;56;52" dur="3s" repeatCount="indefinite"/>
-      <animate attributeName="ry" values="52;56;52" dur="3s" repeatCount="indefinite"/>
+    <!-- Center: small glowing hub dot (no text — keeps content clear) -->
+    <circle cx="600" cy="350" r="16" fill="rgba(240,165,0,.18)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
+      <animate attributeName="r" values="16;20;16" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="350" r="7" fill="#f0a500" opacity=".85"/>
+    <!-- Orbit ring -->
+    <ellipse cx="600" cy="350" rx="90" ry="60" fill="none" stroke="rgba(240,165,0,.1)" stroke-width="1" stroke-dasharray="8,4">
+      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="22s" repeatCount="indefinite"/>
     </ellipse>
-    <ellipse cx="600" cy="350" rx="36" ry="36" fill="rgba(240,165,0,.2)" stroke="#f0a500" stroke-width="2"/>
-    <text x="600" y="344" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" letter-spacing="1">OG</text>
-    <text x="600" y="358" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" letter-spacing="1">ENGINE</text>
 
-    <!-- Node: Our World -->
-    <ellipse cx="260" cy="170" rx="60" ry="38" fill="url(#rg-green)" opacity=".7"/>
-    <ellipse cx="260" cy="170" rx="44" ry="28" fill="rgba(0,204,136,.15)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="260" y="165" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00cc88" font-weight="700">OUR</text>
-    <text x="260" y="177" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00cc88" font-weight="700">WORLD</text>
+    <!-- Node: Our World — top-left corner -->
+    <ellipse cx="110" cy="95" rx="70" ry="30" fill="rgba(0,204,136,.1)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="110" y="90" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">OUR</text>
+    <text x="110" y="104" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">WORLD</text>
 
-    <!-- Node: ODOOM -->
-    <ellipse cx="940" cy="170" rx="60" ry="38" fill="url(#rg-red)" opacity=".7"/>
-    <ellipse cx="940" cy="170" rx="44" ry="28" fill="rgba(255,68,85,.15)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="940" y="165" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#ff4455" font-weight="700">O</text>
-    <text x="940" y="177" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#ff4455" font-weight="700">DOOM</text>
+    <!-- Node: ODOOM — top-right corner, single line -->
+    <ellipse cx="1090" cy="95" rx="70" ry="30" fill="rgba(255,68,85,.1)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="1090" y="97" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="8.5" fill="#ff4455" font-weight="700">ODOOM</text>
 
-    <!-- Node: OQUAKE -->
-    <ellipse cx="260" cy="540" rx="60" ry="38" fill="rgba(240,165,0,.15)" opacity=".7"/>
-    <ellipse cx="260" cy="540" rx="44" ry="28" fill="rgba(240,165,0,.15)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="260" y="535" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#f0a500" font-weight="700">O</text>
-    <text x="260" y="547" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7.5" fill="#f0a500" font-weight="700">QUAKE</text>
+    <!-- Node: OQUAKE — bottom-left corner, single line -->
+    <ellipse cx="110" cy="605" rx="70" ry="30" fill="rgba(240,165,0,.1)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="110" y="607" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="8.5" fill="#f0a500" font-weight="700">OQUAKE</text>
 
-    <!-- Node: Your Game (dashed future) -->
-    <ellipse cx="940" cy="540" rx="44" ry="28" fill="rgba(0,229,255,.06)" stroke="#00e5ff" stroke-width="1" stroke-dasharray="5,3" opacity=".6"/>
-    <text x="940" y="535" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7" fill="#00e5ff" opacity=".7" font-weight="700">YOUR</text>
-    <text x="940" y="547" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="7" fill="#00e5ff" opacity=".7" font-weight="700">GAME →</text>
-
-    <!-- Orbit ring around center -->
-    <ellipse cx="600" cy="350" rx="120" ry="80" fill="none" stroke="rgba(240,165,0,.12)" stroke-width="1" stroke-dasharray="8,4">
-      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="20s" repeatCount="indefinite"/>
-    </ellipse>
+    <!-- Node: Your Game — bottom-right corner, dashed -->
+    <ellipse cx="1090" cy="605" rx="70" ry="30" fill="rgba(0,229,255,.05)" stroke="#00e5ff" stroke-width="1" stroke-dasharray="5,3" opacity=".6"/>
+    <text x="1090" y="600" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00e5ff" opacity=".7" font-weight="700">YOUR</text>
+    <text x="1090" y="614" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00e5ff" opacity=".7" font-weight="700">GAME →</text>
   </svg>
 
   <div class="hero-inner">
