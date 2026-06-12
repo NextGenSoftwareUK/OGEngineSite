@@ -341,7 +341,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
     <div class="what-grid reveal">
       <div class="what-text">
         <h2>The Engine That <span>Connects Worlds</span></h2>
-        <p>OGEngine is the game-layer backbone of the OASIS Omniverse — a C/C++ runtime built on the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> that makes your game a first-class citizen of a shared, living multiverse.</p>
+        <p>OGEngine is the game-layer backbone of the OASIS Omniverse — a shared runtime layer built on the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> and <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a> that makes your game a first-class citizen of a shared, living multiverse.</p>
         <p>When a player earns a sword in Our World, it exists in their OASIS inventory. When they find a keycard in a park, it opens a real door in ODOOM. When they gain karma by helping someone in real life, it flows into every connected world. OGEngine is what makes this possible.</p>
         <p>Any game that integrates OGEngine gets instant access to the full OASIS player base, cross-game economy, persistent avatar identity, and the real-world discovery network — no backend infrastructure required.</p>
         <div class="stat-row">
@@ -501,16 +501,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
     <div class="dev-grid reveal">
       <div class="dev-text">
         <h2>Powered by the <span>STAR API Client</span></h2>
-        <p>The STAR API Client is OGEngine's C/C++ integration layer — a drop-in library that connects your game to the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> and the broader <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a>.</p>
-        <p>No complex backend. No separate authentication system. Just link the library, configure your game ID, and your players instantly have cross-world inventory, persistent avatars, and karma that flows between worlds.</p>
-        <p>Built-in caching, batching, and multithreading mean your game stays performant even while syncing with the full Omniverse in real time.</p>
+        <p>The STAR API Client is written in C# and compiled with <strong style="color:var(--text)">Native AOT (Ahead-of-Time)</strong> — it ships as <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.dll</code> / <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.lib</code> exposing a standard C ABI via AOT native bindings. Your C or C++ game links against it and calls <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">star_api_*</code> functions at native speed — no .NET runtime shipped with your game, no managed overhead at all.</p>
+        <p>The client acts as middleware between your game and the two OASIS API layers: <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a> handles identity, avatar profiles, wallets, and persistence; <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> drives quests, GeoHotSpots, objectives, and STARNET holons. The client locally merges quest progress so your game never makes raw HTTP calls.</p>
+        <p>Ships with offline mode and cloud resynchronisation, auto failover, auto load-balancing, auto-replication, built-in caching, batching, and multithreading. Runs on Windows, Linux, and macOS.</p>
         <div class="tech-pills">
-          <span class="tech-pill">C / C++</span>
-          <span class="tech-pill">WEB5 STAR API</span>
+          <span class="tech-pill">C# NATIVE AOT</span>
+          <span class="tech-pill">C ABI EXPORTS</span>
           <span class="tech-pill">WEB4 OASIS API</span>
+          <span class="tech-pill">WEB5 STAR API</span>
           <span class="tech-pill">NFT MINTING</span>
-          <span class="tech-pill">WEBSOCKETS</span>
+          <span class="tech-pill">OFFLINE CAPABLE</span>
           <span class="tech-pill">MULTITHREADED</span>
+          <span class="tech-pill">WIN · LINUX · macOS</span>
         </div>
         <div class="dev-links">
           <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="btn-primary">DOWNLOAD SDK</a>
@@ -518,28 +520,28 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
         </div>
       </div>
       <div>
-        <pre class="code-block"><span class="cm">// Include the STAR API Client</span>
-<span class="kw">#include</span> <span class="str">"OGEngine/StarClient.h"</span>
-<span class="kw">#include</span> <span class="str">"OGEngine/Inventory.h"</span>
-<span class="kw">#include</span> <span class="str">"OGEngine/Avatar.h"</span>
+        <pre class="code-block"><span class="cm">// Link star_api.dll / star_api.lib — C# Native AOT, native C ABI</span>
+<span class="kw">#include</span> <span class="str">"star_api.h"</span>
 
-<span class="cm">// Initialise with your game ID</span>
-<span class="fn">OGEngine</span><span class="pun">::</span><span class="fn">Init</span><span class="pun">(</span><span class="str">"your-game-id"</span><span class="pun">,</span> <span class="str">"sk_live_..."</span><span class="pun">);</span>
+<span class="cm">// Initialise with your game ID and API key</span>
+<span class="fn">star_api_init</span><span class="pun">(</span><span class="str">"your-game-id"</span><span class="pun">,</span> <span class="str">"sk_live_..."</span><span class="pun">);</span>
 
 <span class="cm">// Load the shared OASIS avatar — same across Our World, ODOOM, OQUAKE</span>
-<span class="kw">auto</span> avatar <span class="pun">=</span> <span class="fn">Avatar</span><span class="pun">::</span><span class="fn">GetCurrent</span><span class="pun">();</span>
+<span class="kw">StarAvatar</span> avatar <span class="pun">=</span> <span class="fn">star_api_avatar_get_current</span><span class="pun">();</span>
 
 <span class="cm">// Check shared inventory — keycard found in a park unlocks a door in ODOOM</span>
-<span class="kw">auto</span> items <span class="pun">=</span> <span class="fn">Inventory</span><span class="pun">::</span><span class="fn">GetItems</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">);</span>
-<span class="kw">if</span> <span class="pun">(</span>items<span class="pun">.</span><span class="fn">Has</span><span class="pun">(</span><span class="str">"keycard_level_3"</span><span class="pun">))</span> <span class="pun">{</span>
-  <span class="fn">OpenDoor</span><span class="pun">(</span>door_id<span class="pun">);</span>
+<span class="kw">if</span> <span class="pun">(</span><span class="fn">star_api_inventory_has</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"keycard_level_3"</span><span class="pun">))</span> <span class="pun">{</span>
+    <span class="fn">OpenDoor</span><span class="pun">(</span>door_id<span class="pun">);</span>
 <span class="pun">}</span>
 
 <span class="cm">// Award karma — propagates to all connected worlds instantly</span>
-<span class="fn">Karma</span><span class="pun">::</span><span class="fn">Award</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"monster_killed"</span><span class="pun">,</span> 5<span class="pun">);</span>
+<span class="fn">star_api_karma_award</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"monster_killed"</span><span class="pun">,</span> 5<span class="pun">);</span>
+
+<span class="cm">// Sync quest progress locally — no raw HTTP calls from your game DLL</span>
+<span class="fn">star_api_quest_sync</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"quest_baron_of_hell"</span><span class="pun">);</span>
 
 <span class="cm">// Mint a kill as an NFT</span>
-<span class="fn">NFT</span><span class="pun">::</span><span class="fn">Mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span></pre>
+<span class="fn">star_api_nft_mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span></pre>
       </div>
     </div>
   </div>
