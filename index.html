@@ -144,7 +144,7 @@ section{position:relative;z-index:1}
 .dev-text h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;margin-bottom:1rem}
 .dev-text h2 span{color:var(--gold)}
 .dev-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1rem;font-size:1.02rem}
-.code-block{background:#040c1a;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:1.4rem;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.8;color:#7dd3fc;overflow-x:auto}
+.code-block{background:#040c1a;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:1.4rem;font-family:'Share Tech Mono',monospace;font-size:.82rem;line-height:1.8;color:#7dd3fc;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:0}
 .code-block .cm{color:#4a6080}
 .code-block .kw{color:var(--cyan)}
 .code-block .str{color:var(--green)}
@@ -518,8 +518,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
         </div>
       </div>
       <div>
-        <div class="code-block">
-<span class="cm">// Include the STAR API Client</span>
+        <pre class="code-block"><span class="cm">// Include the STAR API Client</span>
 <span class="kw">#include</span> <span class="str">"OGEngine/StarClient.h"</span>
 <span class="kw">#include</span> <span class="str">"OGEngine/Inventory.h"</span>
 <span class="kw">#include</span> <span class="str">"OGEngine/Avatar.h"</span>
@@ -527,23 +526,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
 <span class="cm">// Initialise with your game ID</span>
 <span class="fn">OGEngine</span><span class="pun">::</span><span class="fn">Init</span><span class="pun">(</span><span class="str">"your-game-id"</span><span class="pun">,</span> <span class="str">"sk_live_..."</span><span class="pun">);</span>
 
-<span class="cm">// Load the player's shared OASIS avatar</span>
+<span class="cm">// Load the shared OASIS avatar — same across Our World, ODOOM, OQUAKE</span>
 <span class="kw">auto</span> avatar <span class="pun">=</span> <span class="fn">Avatar</span><span class="pun">::</span><span class="fn">GetCurrent</span><span class="pun">();</span>
-<span class="cm">// → same avatar across Our World, ODOOM, OQUAKE</span>
 
-<span class="cm">// Check shared inventory for a keycard</span>
+<span class="cm">// Check shared inventory — keycard found in a park unlocks a door in ODOOM</span>
 <span class="kw">auto</span> items <span class="pun">=</span> <span class="fn">Inventory</span><span class="pun">::</span><span class="fn">GetItems</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">);</span>
 <span class="kw">if</span> <span class="pun">(</span>items<span class="pun">.</span><span class="fn">Has</span><span class="pun">(</span><span class="str">"keycard_level_3"</span><span class="pun">))</span> <span class="pun">{</span>
   <span class="fn">OpenDoor</span><span class="pun">(</span>door_id<span class="pun">);</span>
 <span class="pun">}</span>
 
-<span class="cm">// Award karma for an in-game action</span>
-<span class="fn">Karma</span><span class="pun">::</span><span class="fn">Award</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"monster_killed"</span><span class="pun">,</span> <span class="num">5</span><span class="pun">);</span>
-<span class="cm">// → propagates to Our World and OQUAKE instantly</span>
+<span class="cm">// Award karma — propagates to all connected worlds instantly</span>
+<span class="fn">Karma</span><span class="pun">::</span><span class="fn">Award</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"monster_killed"</span><span class="pun">,</span> 5<span class="pun">);</span>
 
 <span class="cm">// Mint a kill as an NFT</span>
-<span class="fn">NFT</span><span class="pun">::</span><span class="fn">Mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span>
-        </div>
+<span class="fn">NFT</span><span class="pun">::</span><span class="fn">Mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span></pre>
       </div>
     </div>
   </div>
