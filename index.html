@@ -378,7 +378,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
       <p>OGEngine is not a single library — it is the contract formed by three integrated layers that together give any game access to the full OASIS multiverse with zero backend infrastructure required.</p>
     </div>
     <div class="arch-wrap reveal">
-      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:580px;display:block">
+      <svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:580px;display:block">
         <defs>
           <filter id="ag-glow" x="-5%" y="-10%" width="110%" height="120%">
             <feGaussianBlur stdDeviation="3" result="b"/>
@@ -387,86 +387,75 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
         </defs>
 
         <!-- ═══ GAME TIER ═══ -->
-        <!-- YOUR GAME (dashed — future integration) -->
-        <rect x="15" y="15" width="200" height="58" rx="5" fill="rgba(240,165,0,.07)" stroke="rgba(240,165,0,.28)" stroke-width="1" stroke-dasharray="5,3"/>
-        <text x="115" y="39" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" opacity=".75">YOUR GAME</text>
-        <text x="115" y="57" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="#4a6080">C / C++ · any engine</text>
+        <rect x="15" y="15" width="200" height="62" rx="5" fill="rgba(240,165,0,.07)" stroke="rgba(240,165,0,.28)" stroke-width="1" stroke-dasharray="5,3"/>
+        <text x="115" y="41" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="12" fill="#f0a500" font-weight="700" opacity=".75">YOUR GAME</text>
+        <text x="115" y="60" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#4a6080">C / C++ · any engine</text>
 
-        <!-- ODOOM -->
-        <rect x="225" y="15" width="200" height="58" rx="5" fill="rgba(240,165,0,.1)" stroke="rgba(240,165,0,.4)" stroke-width="1"/>
-        <text x="325" y="39" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700">ODOOM</text>
-        <text x="325" y="57" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="#6a80a8">C++ · UZDoom</text>
+        <rect x="225" y="15" width="200" height="62" rx="5" fill="rgba(240,165,0,.1)" stroke="rgba(240,165,0,.4)" stroke-width="1"/>
+        <text x="325" y="41" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="12" fill="#f0a500" font-weight="700">ODOOM</text>
+        <text x="325" y="60" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#6a80a8">C++ · UZDoom</text>
 
-        <!-- OQUAKE -->
-        <rect x="435" y="15" width="200" height="58" rx="5" fill="rgba(240,165,0,.1)" stroke="rgba(240,165,0,.4)" stroke-width="1"/>
-        <text x="535" y="39" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700">OQUAKE</text>
-        <text x="535" y="57" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="#6a80a8">C · vkQuake</text>
+        <rect x="435" y="15" width="200" height="62" rx="5" fill="rgba(240,165,0,.1)" stroke="rgba(240,165,0,.4)" stroke-width="1"/>
+        <text x="535" y="41" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="12" fill="#f0a500" font-weight="700">OQUAKE</text>
+        <text x="535" y="60" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#6a80a8">C · vkQuake</text>
 
-        <!-- OUR WORLD -->
-        <rect x="645" y="15" width="240" height="58" rx="5" fill="rgba(240,165,0,.1)" stroke="rgba(240,165,0,.4)" stroke-width="1"/>
-        <text x="765" y="39" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700">OUR WORLD</text>
-        <text x="765" y="57" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="#6a80a8">Unity / C#</text>
+        <rect x="645" y="15" width="240" height="62" rx="5" fill="rgba(240,165,0,.1)" stroke="rgba(240,165,0,.4)" stroke-width="1"/>
+        <text x="765" y="41" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="12" fill="#f0a500" font-weight="700">OUR WORLD</text>
+        <text x="765" y="60" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#6a80a8">Unity / C#</text>
 
         <!-- Connectors: game tier → STARAPIClient -->
-        <line x1="115" y1="73" x2="115" y2="114" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
-        <line x1="325" y1="73" x2="325" y2="114" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
-        <line x1="535" y1="73" x2="535" y2="114" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
-        <line x1="765" y1="73" x2="765" y2="114" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
-        <!-- Arrowheads -->
-        <polygon points="112,112 115,120 118,112" fill="rgba(240,165,0,.5)"/>
-        <polygon points="322,112 325,120 328,112" fill="rgba(240,165,0,.5)"/>
-        <polygon points="532,112 535,120 538,112" fill="rgba(240,165,0,.5)"/>
-        <polygon points="762,112 765,120 768,112" fill="rgba(240,165,0,.5)"/>
-        <!-- Label -->
-        <text x="450" y="98" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7.5" fill="rgba(240,165,0,.55)" letter-spacing=".5">star_api_* calls</text>
-        <!-- Animated data dots -->
-        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" repeatCount="indefinite" path="M115,73 L115,112"/></circle>
-        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" begin="0.4s" repeatCount="indefinite" path="M325,73 L325,112"/></circle>
-        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M535,73 L535,112"/></circle>
-        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" begin="1.2s" repeatCount="indefinite" path="M765,73 L765,112"/></circle>
+        <line x1="115" y1="77" x2="115" y2="118" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="325" y1="77" x2="325" y2="118" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="535" y1="77" x2="535" y2="118" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="765" y1="77" x2="765" y2="118" stroke="rgba(240,165,0,.35)" stroke-width="1" stroke-dasharray="3,2"/>
+        <polygon points="112,116 115,124 118,116" fill="rgba(240,165,0,.5)"/>
+        <polygon points="322,116 325,124 328,116" fill="rgba(240,165,0,.5)"/>
+        <polygon points="532,116 535,124 538,116" fill="rgba(240,165,0,.5)"/>
+        <polygon points="762,116 765,124 768,116" fill="rgba(240,165,0,.5)"/>
+        <text x="450" y="101" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="10" fill="rgba(240,165,0,.55)" letter-spacing=".5">star_api_* calls</text>
+        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" repeatCount="indefinite" path="M115,77 L115,116"/></circle>
+        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" begin="0.4s" repeatCount="indefinite" path="M325,77 L325,116"/></circle>
+        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M535,77 L535,116"/></circle>
+        <circle r="3" fill="#f0a500" opacity=".8"><animateMotion dur="1.6s" begin="1.2s" repeatCount="indefinite" path="M765,77 L765,116"/></circle>
 
-        <!-- ═══ STARAPIClient MIDDLEWARE ═══ -->
-        <rect x="15" y="122" width="870" height="90" rx="7" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#ag-glow)"/>
-        <text x="22" y="135" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(240,165,0,.5)" letter-spacing="1.5">MIDDLEWARE</text>
-        <text x="450" y="152" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="13" fill="#f0a500" font-weight="700" letter-spacing="1">STARAPIClient</text>
-        <text x="450" y="169" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7.5" fill="#a8bfd8">C# · NATIVE AOT · C ABI EXPORTS (star_api_*) · LOCAL QUEST MERGE · CACHING · BATCHING · MULTITHREADING</text>
-        <text x="450" y="185" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="#6a80a8">OFFLINE CAPABLE · AUTO FAILOVER · AUTO LOAD-BALANCING · AUTO-REPLICATION · WINDOWS · LINUX · macOS</text>
-        <!-- star_api.dll / .lib pill -->
-        <rect x="358" y="194" width="115" height="14" rx="3" fill="rgba(240,165,0,.15)" stroke="rgba(240,165,0,.3)" stroke-width="1"/>
-        <text x="415" y="204" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6.5" fill="#f0a500">star_api.dll / .lib</text>
-        <rect x="482" y="194" width="60" height="14" rx="3" fill="rgba(240,165,0,.15)" stroke="rgba(240,165,0,.3)" stroke-width="1"/>
-        <text x="512" y="204" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="6.5" fill="#f0a500">native speed</text>
+        <!-- ═══ STARAPIClient MIDDLEWARE (y=126 to y=234) ═══ -->
+        <rect x="15" y="126" width="870" height="108" rx="7" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#ag-glow)"/>
+        <text x="22" y="140" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(240,165,0,.5)" letter-spacing="1.5">MIDDLEWARE</text>
+        <text x="450" y="158" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="16" fill="#f0a500" font-weight="700" letter-spacing="1">STARAPIClient</text>
+        <text x="450" y="178" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#a8bfd8">C# · NATIVE AOT · C ABI EXPORTS (star_api_*) · LOCAL QUEST MERGE · CACHING · BATCHING · MULTITHREADING</text>
+        <text x="450" y="197" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="8.5" fill="#6a80a8">OFFLINE CAPABLE · AUTO FAILOVER · AUTO LOAD-BALANCING · AUTO-REPLICATION · WINDOWS · LINUX · macOS</text>
+        <rect x="330" y="208" width="128" height="18" rx="3" fill="rgba(240,165,0,.15)" stroke="rgba(240,165,0,.3)" stroke-width="1"/>
+        <text x="394" y="220" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="8.5" fill="#f0a500">star_api.dll / .lib</text>
+        <rect x="468" y="208" width="90" height="18" rx="3" fill="rgba(240,165,0,.15)" stroke="rgba(240,165,0,.3)" stroke-width="1"/>
+        <text x="513" y="220" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="8.5" fill="#f0a500">native speed</text>
 
-        <!-- Connectors: STARAPIClient → API tier -->
-        <!-- STARAPIClient bottom = y:122+90=212 -->
-        <line x1="225" y1="212" x2="225" y2="252" stroke="rgba(0,229,255,.4)" stroke-width="1" stroke-dasharray="3,2"/>
-        <line x1="675" y1="212" x2="675" y2="252" stroke="rgba(139,92,246,.4)" stroke-width="1" stroke-dasharray="3,2"/>
-        <polygon points="222,249 225,257 228,249" fill="rgba(0,229,255,.5)"/>
-        <polygon points="672,249 675,257 678,249" fill="rgba(139,92,246,.5)"/>
-        <circle r="3" fill="#00e5ff" opacity=".8"><animateMotion dur="1.4s" repeatCount="indefinite" path="M225,212 L225,249"/></circle>
-        <circle r="3" fill="#8b5cf6" opacity=".8"><animateMotion dur="1.4s" begin="0.7s" repeatCount="indefinite" path="M675,212 L675,249"/></circle>
+        <!-- Connectors: STARAPIClient → API tier (bottom=234) -->
+        <line x1="225" y1="234" x2="225" y2="272" stroke="rgba(0,229,255,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="675" y1="234" x2="675" y2="272" stroke="rgba(139,92,246,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+        <polygon points="222,269 225,278 228,269" fill="rgba(0,229,255,.5)"/>
+        <polygon points="672,269 675,278 678,269" fill="rgba(139,92,246,.5)"/>
+        <circle r="3" fill="#00e5ff" opacity=".8"><animateMotion dur="1.4s" repeatCount="indefinite" path="M225,234 L225,269"/></circle>
+        <circle r="3" fill="#8b5cf6" opacity=".8"><animateMotion dur="1.4s" begin="0.7s" repeatCount="indefinite" path="M675,234 L675,269"/></circle>
 
-        <!-- ═══ API TIER ═══ -->
-        <!-- WEB4 OASIS API -->
-        <rect x="15" y="258" width="430" height="152" rx="7" fill="rgba(0,229,255,.07)" stroke="rgba(0,229,255,.4)" stroke-width="1.5"/>
-        <text x="22" y="271" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(0,229,255,.45)" letter-spacing="1.5">API TIER</text>
-        <text x="230" y="285" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="10" fill="#00e5ff" font-weight="700">WEB4 OASIS API</text>
-        <text x="230" y="299" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="rgba(0,229,255,.5)">api.web4.oasisomniverse.one</text>
-        <text x="35" y="318" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Identity &amp; Authentication</text>
-        <text x="35" y="333" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Avatar Profiles &amp; SSO</text>
-        <text x="35" y="348" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Wallet &amp; NFT Ownership</text>
-        <text x="35" y="363" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Karma System</text>
-        <text x="35" y="378" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Persistent Storage &amp; Subscriptions</text>
+        <!-- ═══ API TIER (y=279) ═══ -->
+        <rect x="15" y="279" width="430" height="186" rx="7" fill="rgba(0,229,255,.07)" stroke="rgba(0,229,255,.4)" stroke-width="1.5"/>
+        <text x="22" y="295" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(0,229,255,.45)" letter-spacing="1.5">API TIER</text>
+        <text x="230" y="312" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="13" fill="#00e5ff" font-weight="700">WEB4 OASIS API</text>
+        <text x="230" y="329" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9" fill="rgba(0,229,255,.5)">api.web4.oasisomniverse.one</text>
+        <text x="35" y="351" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Identity &amp; Authentication</text>
+        <text x="35" y="369" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Avatar Profiles &amp; SSO</text>
+        <text x="35" y="387" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Wallet &amp; NFT Ownership</text>
+        <text x="35" y="405" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Karma System</text>
+        <text x="35" y="423" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Persistent Storage &amp; Subscriptions</text>
 
-        <!-- WEB5 STAR API -->
-        <rect x="455" y="258" width="430" height="152" rx="7" fill="rgba(139,92,246,.07)" stroke="rgba(139,92,246,.4)" stroke-width="1.5"/>
-        <text x="670" y="285" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="10" fill="#8b5cf6" font-weight="700">WEB5 STAR API</text>
-        <text x="670" y="299" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7" fill="rgba(139,92,246,.5)">api.starnet.oasisomniverse.one</text>
-        <text x="475" y="318" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Quest Definitions &amp; Objectives</text>
-        <text x="475" y="333" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  GeoHotSpots (Map / AR / VR / IR)</text>
-        <text x="475" y="348" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  STARNET Holons</text>
-        <text x="475" y="363" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Cross-game Quest &amp; Progress Sync</text>
-        <text x="475" y="378" font-family="Rajdhani,sans-serif" font-size="9" fill="#a8bfd8">→  Real-world Item Discovery</text>
+        <rect x="455" y="279" width="430" height="186" rx="7" fill="rgba(139,92,246,.07)" stroke="rgba(139,92,246,.4)" stroke-width="1.5"/>
+        <text x="670" y="312" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="13" fill="#8b5cf6" font-weight="700">WEB5 STAR API</text>
+        <text x="670" y="329" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9" fill="rgba(139,92,246,.5)">api.starnet.oasisomniverse.one</text>
+        <text x="475" y="351" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Quest Definitions &amp; Objectives</text>
+        <text x="475" y="369" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  GeoHotSpots (Map / AR / VR / IR)</text>
+        <text x="475" y="387" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  STARNET Holons</text>
+        <text x="475" y="405" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Cross-game Quest &amp; Progress Sync</text>
+        <text x="475" y="423" font-family="Rajdhani,sans-serif" font-size="12" fill="#a8bfd8">→  Real-world Item Discovery</text>
       </svg>
     </div>
     <!-- Equation band -->
