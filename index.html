@@ -267,10 +267,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
     <ellipse cx="600" cy="350" rx="320" ry="220" fill="url(#rg1)"/>
 
     <!-- Connection lines: center hub → corner nodes -->
-    <line x1="600" y1="350" x2="110" y2="95" stroke="#00cc88" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
+    <line x1="600" y1="350" x2="110" y2="145" stroke="#00cc88" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
     </line>
-    <line x1="600" y1="350" x2="1090" y2="95" stroke="#ff4455" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
+    <line x1="600" y1="350" x2="1090" y2="145" stroke="#ff4455" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.1s" repeatCount="indefinite"/>
     </line>
     <line x1="600" y1="350" x2="110" y2="605" stroke="#f0a500" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
@@ -282,10 +282,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
 
     <!-- Data pulses travelling outward -->
     <circle r="5" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L110,95"/>
+      <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L110,145"/>
     </circle>
     <circle r="5" fill="#ff4455" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L1090,95"/>
+      <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L1090,145"/>
     </circle>
     <circle r="5" fill="#f0a500" opacity=".9" filter="url(#glow-sm)">
       <animateMotion dur="2.8s" repeatCount="indefinite" path="M600,350 L110,605"/>
@@ -305,13 +305,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
     </ellipse>
 
     <!-- Node: Our World — top-left corner -->
-    <ellipse cx="110" cy="95" rx="70" ry="30" fill="rgba(0,204,136,.1)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="110" y="90" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">OUR</text>
-    <text x="110" y="104" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">WORLD</text>
+    <ellipse cx="110" cy="145" rx="70" ry="30" fill="rgba(0,204,136,.1)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="110" y="140" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">OUR</text>
+    <text x="110" y="154" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">WORLD</text>
 
     <!-- Node: ODOOM — top-right corner, single line -->
-    <ellipse cx="1090" cy="95" rx="70" ry="30" fill="rgba(255,68,85,.1)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="1090" y="97" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="8.5" fill="#ff4455" font-weight="700">ODOOM</text>
+    <ellipse cx="1090" cy="145" rx="70" ry="30" fill="rgba(255,68,85,.1)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="1090" y="147" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="8.5" fill="#ff4455" font-weight="700">ODOOM</text>
 
     <!-- Node: OQUAKE — bottom-left corner, single line -->
     <ellipse cx="110" cy="605" rx="70" ry="30" fill="rgba(240,165,0,.1)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
