@@ -46,8 +46,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-cta:hover{opacity:.85}
 
 /* ── HERO ── */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
-.hero-inner{position:relative;z-index:2;max-width:900px}
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
+.hero-inner{max-width:900px}
 .hero-kicker{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:.85rem;letter-spacing:.25em;color:var(--gold);border:1px solid var(--gold);padding:.35rem 1.1rem;border-radius:2px;margin-bottom:1.8rem;text-transform:uppercase}
 #hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:1.4rem;text-shadow:0 0 40px var(--glow)}
 #hero h1 span{color:var(--gold)}
@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .btn-outline-cyan:hover{background:rgba(0,229,255,.1)}
 
 /* hero SVG network */
-#hero-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.9}
+#hero-svg{order:10;display:block;width:100%;max-width:860px;margin-top:40px;pointer-events:none;opacity:.85}
 
 /* ── SECTIONS ── */
 section{position:relative;z-index:1}
@@ -264,7 +264,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
 
 <!-- HERO -->
 <section id="hero">
-  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="#f0a500" stop-opacity=".15"/>
@@ -305,11 +305,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
       <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L1090,605"/>
     </circle>
 
-    <!-- Center: small glowing hub dot (no text — keeps content clear) -->
-    <circle cx="600" cy="350" r="16" fill="rgba(240,165,0,.18)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
-      <animate attributeName="r" values="16;20;16" dur="3s" repeatCount="indefinite"/>
+    <!-- Center: OGEngine branded hub -->
+    <circle cx="600" cy="350" r="50" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
+      <animate attributeName="r" values="50;56;50" dur="3s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="600" cy="350" r="7" fill="#f0a500" opacity=".85"/>
+    <circle cx="600" cy="350" r="42" fill="rgba(5,12,35,.9)" stroke="rgba(240,165,0,.35)" stroke-width="1"/>
+    <text x="600" y="346" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="17" fill="#f0a500" font-weight="900" letter-spacing="1">OG</text>
+    <text x="600" y="363" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" letter-spacing="2.5">ENGINE</text>
     <!-- Orbit ring -->
     <ellipse cx="600" cy="350" rx="90" ry="60" fill="none" stroke="rgba(240,165,0,.1)" stroke-width="1" stroke-dasharray="8,4">
       <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="22s" repeatCount="indefinite"/>
