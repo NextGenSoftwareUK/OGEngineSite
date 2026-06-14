@@ -291,7 +291,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
       <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3.2s" repeatCount="indefinite"/>
     </line>
 
-    <!-- Data pulses travelling outward -->
+    <!-- Data pulses – outward and inward -->
     <circle r="10" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L110,175"/>
     </circle>
@@ -303,6 +303,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
     </circle>
     <circle r="8" fill="#00e5ff" opacity=".6" filter="url(#glow-sm)">
       <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L1090,605"/>
+    </circle>
+    <circle r="10" fill="#00cc88" opacity=".7" filter="url(#glow-sm)">
+      <animateMotion dur="2.5s" begin="1.25s" repeatCount="indefinite" path="M110,175 L600,350"/>
+    </circle>
+    <circle r="10" fill="#ff4455" opacity=".7" filter="url(#glow-sm)">
+      <animateMotion dur="2.1s" begin="1.05s" repeatCount="indefinite" path="M1090,175 L600,350"/>
+    </circle>
+    <circle r="10" fill="#f0a500" opacity=".7" filter="url(#glow-sm)">
+      <animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite" path="M110,605 L600,350"/>
+    </circle>
+    <circle r="8" fill="#00e5ff" opacity=".5" filter="url(#glow-sm)">
+      <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M1090,605 L600,350"/>
     </circle>
 
     <!-- Center: OGEngine branded hub -->
@@ -742,11 +754,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
         <h4>ECOSYSTEM</h4>
         <ul>
           <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a></li>
+          <li><a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">OPORTAL</a></li>
+          <li><a href="https://starnet.oasisomniverse.one" target="_blank" rel="noopener">STARNET</a></li>
           <li><a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a></li>
           <li><a href="https://odoom.oasisomniverse.one" target="_blank" rel="noopener">ODOOM</a></li>
-          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQUAKE</a></li>
+          <li><a href="https://oquake.oasisomniverse.one" target="_blank" rel="noopener">OQuake</a></li>
           <li><a href="https://holonet.oasisomniverse.one" target="_blank" rel="noopener">HoloNET</a></li>
-          <li><a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener">OPORTAL</a></li>
+          <li><a href="https://founders.oasisomniverse.one" target="_blank" rel="noopener">Founders NFT</a></li>
+          <li><a href="https://web4.oasisomniverse.one" target="_blank" rel="noopener">Web4</a></li>
         </ul>
       </div>
       <div class="foot-col">
