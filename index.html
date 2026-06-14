@@ -292,48 +292,48 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:4rem
     </line>
 
     <!-- Data pulses travelling outward -->
-    <circle r="5" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
+    <circle r="10" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
       <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L110,175"/>
     </circle>
-    <circle r="5" fill="#ff4455" opacity=".9" filter="url(#glow-sm)">
+    <circle r="10" fill="#ff4455" opacity=".9" filter="url(#glow-sm)">
       <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L1090,175"/>
     </circle>
-    <circle r="5" fill="#f0a500" opacity=".9" filter="url(#glow-sm)">
+    <circle r="10" fill="#f0a500" opacity=".9" filter="url(#glow-sm)">
       <animateMotion dur="2.8s" repeatCount="indefinite" path="M600,350 L110,605"/>
     </circle>
-    <circle r="4" fill="#00e5ff" opacity=".6" filter="url(#glow-sm)">
+    <circle r="8" fill="#00e5ff" opacity=".6" filter="url(#glow-sm)">
       <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L1090,605"/>
     </circle>
 
     <!-- Center: OGEngine branded hub -->
-    <circle cx="600" cy="350" r="50" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
-      <animate attributeName="r" values="50;56;50" dur="3s" repeatCount="indefinite"/>
+    <circle cx="600" cy="350" r="100" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
+      <animate attributeName="r" values="100;112;100" dur="3s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="600" cy="350" r="42" fill="rgba(5,12,35,.9)" stroke="rgba(240,165,0,.35)" stroke-width="1"/>
-    <text x="600" y="346" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="17" fill="#f0a500" font-weight="900" letter-spacing="1">OG</text>
-    <text x="600" y="363" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="9" fill="#f0a500" font-weight="700" letter-spacing="2.5">ENGINE</text>
+    <circle cx="600" cy="350" r="84" fill="rgba(5,12,35,.9)" stroke="rgba(240,165,0,.35)" stroke-width="1"/>
+    <text x="600" y="340" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="34" fill="#f0a500" font-weight="900" letter-spacing="1">OG</text>
+    <text x="600" y="368" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="18" fill="#f0a500" font-weight="700" letter-spacing="3">ENGINE</text>
     <!-- Orbit ring -->
-    <ellipse cx="600" cy="350" rx="90" ry="60" fill="none" stroke="rgba(240,165,0,.1)" stroke-width="1" stroke-dasharray="8,4">
+    <ellipse cx="600" cy="350" rx="180" ry="120" fill="none" stroke="rgba(240,165,0,.1)" stroke-width="1" stroke-dasharray="8,4">
       <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="22s" repeatCount="indefinite"/>
     </ellipse>
 
     <!-- Node: Our World — top-left corner -->
-    <circle cx="110" cy="175" r="45" fill="rgba(0,204,136,.1)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="110" y="168" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">OUR</text>
-    <text x="110" y="183" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="8.5" fill="#00cc88" font-weight="700">WORLD</text>
+    <circle cx="110" cy="175" r="90" fill="rgba(0,204,136,.1)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="110" y="163" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="20" fill="#00cc88" font-weight="700">OUR</text>
+    <text x="110" y="190" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="20" fill="#00cc88" font-weight="700">WORLD</text>
 
-    <!-- Node: ODOOM — top-right corner, single line -->
-    <circle cx="1090" cy="175" r="45" fill="rgba(255,68,85,.1)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="1090" y="175" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="8.5" fill="#ff4455" font-weight="700">ODOOM</text>
+    <!-- Node: ODOOM — top-right corner -->
+    <circle cx="1090" cy="175" r="90" fill="rgba(255,68,85,.1)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="1090" y="175" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="20" fill="#ff4455" font-weight="700">ODOOM</text>
 
-    <!-- Node: OQUAKE — bottom-left corner, single line -->
-    <circle cx="110" cy="605" r="45" fill="rgba(240,165,0,.1)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="110" y="605" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="8.5" fill="#f0a500" font-weight="700">OQUAKE</text>
+    <!-- Node: OQUAKE — bottom-left corner -->
+    <circle cx="110" cy="605" r="90" fill="rgba(240,165,0,.1)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
+    <text x="110" y="605" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="20" fill="#f0a500" font-weight="700">OQUAKE</text>
 
     <!-- Node: Your Game — bottom-right corner, dashed -->
-    <circle cx="1090" cy="605" r="45" fill="rgba(0,229,255,.05)" stroke="#00e5ff" stroke-width="1" stroke-dasharray="5,3" opacity=".6"/>
-    <text x="1090" y="598" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00e5ff" opacity=".7" font-weight="700">YOUR</text>
-    <text x="1090" y="613" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="7.5" fill="#00e5ff" opacity=".7" font-weight="700">GAME →</text>
+    <circle cx="1090" cy="605" r="90" fill="rgba(0,229,255,.05)" stroke="#00e5ff" stroke-width="1" stroke-dasharray="5,3" opacity=".6"/>
+    <text x="1090" y="593" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="18" fill="#00e5ff" opacity=".7" font-weight="700">YOUR</text>
+    <text x="1090" y="617" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="18" fill="#00e5ff" opacity=".7" font-weight="700">GAME →</text>
   </svg>
 
   <div class="hero-inner">
