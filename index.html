@@ -27,6 +27,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
 
 /* ── SCANLINES ── */
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px);pointer-events:none;z-index:9999}
@@ -92,8 +93,10 @@ section{position:relative;z-index:1}
 .feat-icon{font-size:2rem;margin-bottom:1rem}
 .feat-card h3{font-family:'Orbitron',sans-serif;font-size:.9rem;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:.7rem}
 .feat-card p{color:#a8bfd8;font-size:.95rem;line-height:1.6}
-.feat-card a{color:var(--cyan);text-decoration:none}
-.feat-card a:hover{text-decoration:underline}
+.feat-card a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,.3);transition:color .2s,border-color .2s}
+.feat-card a:hover{border-bottom-color:rgba(0,229,255,.8);color:#fff;filter:none}
+p a, .rm-desc a, .become-card-body a, .become-intro a, .tribute-intro a, .ai-intro a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,.3);transition:color .2s,border-color .2s}
+p a:hover, .rm-desc a:hover, .become-card-body a:hover, .become-intro a:hover, .tribute-intro a:hover, .ai-intro a:hover{color:#fff;border-bottom-color:rgba(0,229,255,.8);filter:none}
 
 /* ── CONNECTED GAMES ── */
 #games{padding:6rem 0}
@@ -286,6 +289,10 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
 #epic-quest{padding:6rem 0;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(255,51,85,.04),rgba(255,170,0,.03),rgba(0,229,255,.03),rgba(0,0,0,0))}
 .quest-intro{max-width:820px;margin:0 auto 3.5rem;text-align:center}
 .quest-intro p{color:#a8bfd8;font-size:1.05rem;line-height:1.75}
+.psd-teaser{max-width:820px;margin:0 auto 3.5rem;background:rgba(0,229,255,.03);border:1px solid rgba(0,229,255,.12);border-left:3px solid rgba(0,229,255,.5);border-radius:8px;padding:1.6rem 2rem;text-align:left}
+.psd-teaser .psd-label{font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.28em;color:rgba(0,229,255,.65);margin-bottom:.7rem;text-transform:uppercase}
+.psd-teaser p{color:#a8bfd8;font-size:.92rem;line-height:1.7;margin:0}
+.psd-teaser strong{color:#c8dff0}
 .rift-banner{font-family:'Share Tech Mono',monospace;font-size:.78rem;letter-spacing:.22em;color:rgba(255,51,85,.7);text-align:center;margin-bottom:1.2rem;text-transform:uppercase}
 .quest-chapters{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-bottom:3rem}
 .chapter-tile{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1.4rem 1.6rem;position:relative;overflow:hidden}
@@ -312,8 +319,20 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
 .ai-tile-title{font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.08em;color:#c4a0ff;text-transform:uppercase;margin-bottom:.6rem}
 .ai-tile-desc{font-size:.92rem;color:#ffffff;line-height:1.6}
 .ai-tagline{text-align:center;font-family:'Share Tech Mono',monospace;font-size:.82rem;letter-spacing:.18em;color:rgba(200,160,255,.85);padding-top:1.5rem;border-top:1px solid rgba(120,60,255,.15)}
+/* ── SINGULARITY ── */
+#singularity, #singularity-q { padding: 6rem 0; }
+.singularity-intro { max-width: 820px; margin: 0 auto 3rem; text-align: center; color: #a8bfd8; font-size: 1.05rem; line-height: 1.75; }
+.singularity-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.4rem; margin-bottom: 3rem; }
+.singularity-card { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 1.6rem 1.8rem; }
+.singularity-card-icon { font-size: 1.8rem; margin-bottom: .8rem; }
+.singularity-card-title { font-family: 'Orbitron', sans-serif; font-size: .82rem; font-weight: 700; letter-spacing: .06em; color: #e8f4ff; margin-bottom: .6rem; }
+.singularity-card-desc { font-size: .88rem; color: #a8bfd8; line-height: 1.6; }
+.singularity-quote { background: rgba(0,229,255,.04); border: 1px solid rgba(0,229,255,.15); border-radius: 10px; padding: 2.5rem; text-align: center; max-width: 820px; margin: 0 auto; }
+.singularity-quote-line { font-family: 'Orbitron', sans-serif; font-size: 1.15rem; font-weight: 700; color: #e8f4ff; margin-bottom: .75rem; letter-spacing: .03em; }
+.singularity-quote-sub { font-family: 'Share Tech Mono', monospace; font-size: .78rem; letter-spacing: .18em; color: rgba(0,229,255,.7); text-transform: uppercase; }
 /* ── VIDEO ── */
 .vid-section{padding:5rem 0;background:linear-gradient(180deg,transparent,rgba(240,165,0,.018),transparent)}
+
 .vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2rem;margin-top:2.5rem}
 .vid-card{background:rgba(255,255,255,.03);border:1px solid rgba(240,165,0,.22);border-radius:10px;overflow:hidden;transition:transform .3s,box-shadow .3s}
 .vid-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(240,165,0,.12)}
@@ -460,7 +479,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
       <div class="what-text">
         <h2>The Engine That <span>Connects Worlds</span></h2>
         <p>OGEngine is the game-layer backbone of the OASIS Omniverse — a shared runtime layer built on the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> and <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a> that makes your game a first-class citizen of a shared, living multiverse.</p>
-        <p>When a player earns a sword in Our World, it exists in their OASIS inventory. When they find a keycard in a park, it opens a real door in ODOOM. When they gain karma by helping someone in real life, it flows into every connected world. OGEngine is what makes this possible.</p>
+        <p>When a player earns a sword in <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>, it exists in their OASIS inventory. When they find a keycard in a park, it opens a real door in ODOOM. When they gain karma by helping someone in real life, it flows into every connected world. OGEngine is what makes this possible.</p>
         <p>Any game that integrates OGEngine gets instant access to the full OASIS player base, cross-game economy, persistent avatar identity, and the real-world discovery network — no backend infrastructure required.</p>
         <div class="stat-row">
           <div class="stat-box"><div class="num">3</div><div class="lbl">CONNECTED WORLDS</div></div>
@@ -600,7 +619,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
       <div class="feat-card reveal">
         <div class="feat-icon">📜</div>
         <h3>CROSS-GAME QUESTS</h3>
-        <p>Quests span worlds. Start a quest in Our World, gather an item in ODOOM, complete a challenge in OQUAKE — OGEngine tracks progress across all of them simultaneously.</p>
+        <p>Quests span worlds. Start a quest in <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>, gather an item in ODOOM, complete a challenge in OQUAKE — OGEngine tracks progress across all of them simultaneously.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">⚡</div>
@@ -625,7 +644,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
       <div class="feat-card reveal">
         <div class="feat-icon">⚙️</div>
         <h3>CACHING, BATCHING & MULTITHREADING</h3>
-        <p>Built for performance. OGEngine's STAR API Client handles request batching, intelligent caching, and multithreaded delivery so your game stays fast even with cross-world calls at scale.</p>
+        <p>Built for performance. <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">OGEngine's STAR API Client</a> handles request batching, intelligent caching, and multithreaded delivery so your game stays fast even with cross-world calls at scale.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🎯</div>
@@ -660,12 +679,17 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
       <div class="feat-card reveal">
         <div class="feat-icon">💚</div>
         <h3>KARMA-BASED STAT PROGRESSION</h3>
-        <p>Real-world positive actions — exercise, eating well, helping the community, picking up litter, spending time in nature — earn karma through Our World that directly raises a player's max health, armour, ammo and movement speed across every connected game. The more good you do in real life, the stronger your avatar becomes in-game.</p>
+        <p>Real-world positive actions — exercise, eating well, helping the community, picking up litter, spending time in nature — earn karma through <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> that directly raises a player's max health, armour, ammo and movement speed across every connected game. The more good you do in real life, the stronger your avatar becomes in-game.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🏴</div>
         <h3>CLAN MANAGEMENT</h3>
         <p>OGEngine provides full cross-game clan infrastructure — assign roles within your clan (farmer, combat specialist, scout), manage shared stockpiles of weapons, ammo, health and powerups across all connected games, coordinate supply drops to teammates mid-battle, and maintain emergency reserves for tournaments. A level of clan strategy no previous game has offered.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon">🛠️</div>
+        <h3>MAP EDITOR & QUEST BUILDER</h3>
+        <p>The <a href="https://github.com/NextGenSoftwareUK/ODOOM-Editor/releases/tag/ODOOM_Editor_v1.0.0_ALPHA" target="_blank" rel="noopener">ODOOM Editor</a> lets mappers build and edit levels with full placement of Doom and Quake assets — monsters, keys, health, armour, powerups, weapons and items. Deeper <a href="https://ogengine.oasisomniverse.one" target="_blank" rel="noopener">OGEngine</a> and <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API</a> integration is coming soon, enabling quest and mission creation directly within the editor — alongside the OIDE visual quest builder.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🐾</div>
@@ -697,15 +721,31 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
     <div class="section-head reveal">
       <div class="section-kicker">SEE IT IN ACTION</div>
       <h2>Watch OGEngine</h2>
-      <p>Live tech demo showing cross-game inventory, Avatar SSO, GeoHotSpot triggers and OASIS API integration across ODOOM and OQUAKE.</p>
+      <p>Live tech demo showing cross-game inventory, Avatar SSO, GeoHotSpot triggers and <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener">OASIS API</a> integration across ODOOM and OQUAKE.</p>
     </div>
     <div class="vid-grid reveal">
       <div class="vid-card">
+        <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/3O4ykhDzsiE" title="OGEngine Demo 1 — SSO & shared inventory" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="vid-info">
+          <div class="vid-kicker">OGENGINE · DEMO 1</div>
+          <div class="vid-title">ODOOM + OQUAKE SSO & INVENTORY</div>
+          <div class="vid-text">Shows shared inventory and Avatar SSO flowing across ODOOM and OQuake through OGEngine and the STAR API.</div>
+        </div>
+      </div>
+      <div class="vid-card">
         <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/ZH5u6OVPVYg" title="OGEngine Tech Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         <div class="vid-info">
-          <div class="vid-kicker">OGENGINE · TECH DEMO</div>
-          <div class="vid-title">CROSS-GAME ENGINE DEMO</div>
-          <div class="vid-text">Live demonstration of OGEngine powering ODOOM and OQUAKE — shared inventory, cross-game quests, GeoHotSpot triggers and Avatar SSO all in a single session.</div>
+          <div class="vid-kicker">OGENGINE · DEMO 2</div>
+          <div class="vid-title">WEAPONS + CROSS-GAME QUESTS</div>
+          <div class="vid-text">Demonstrates shared weapons, inventory, SSO and cross-game quests flowing between ODOOM and OQuake via OGEngine.</div>
+        </div>
+      </div>
+      <div class="vid-card">
+        <div class="vid-frame"><iframe src="https://www.youtube-nocookie.com/embed/s4aCSoD84pw" title="Our World GeoNFT AR demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+        <div class="vid-info">
+          <div class="vid-kicker">OUR WORLD · DEMO</div>
+          <div class="vid-title">GEOLOCATION AR + WEB4 GEONFTS</div>
+          <div class="vid-text">Live look at <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> using geolocation AR gameplay with Web4 GeoNFTs — powered by OGEngine and the OASIS NFT API.</div>
         </div>
       </div>
     </div>
@@ -808,7 +848,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
         <div class="meta-card-title">Send to Avatar / Send to Clan</div>
         <div class="meta-card-body">
           <p>Farm powerups, health packs, weapons, ammo and keycards across any connected game — then send them directly to a clan member in the middle of a fierce battle or tournament match. No more losing loot because your inventory is full. No more watching a teammate die because they ran out of health.</p>
-          <p>Clans now need to think like armies — assign a dedicated farmer to stockpile supplies while your best combat players burn through them in matches. Manage emergency reserves. Coordinate supply drops across ODOOM, OQUAKE, Our World and every game that joins the Omniverse. This is a level of long-term strategy and clan logistics that DOOM and Quake never came close to.</p>
+          <p>Clans now need to think like armies — assign a dedicated farmer to stockpile supplies while your best combat players burn through them in matches. Manage emergency reserves. Coordinate supply drops across ODOOM, OQUAKE, <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> and every game that joins the Omniverse. This is a level of long-term strategy and clan logistics that DOOM and Quake never came close to.</p>
         </div>
       </div>
       <div class="meta-card">
@@ -839,12 +879,12 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
       <div class="rw-card c-green">
         <div class="rw-icon">🗝️</div>
         <h3>FIND LOOT IN THE WILD</h3>
-        <p>Keycards, weapons, armour, health packs, and powerups are hidden at GPS coordinates in parks and public spaces around the world. Visit the location in real life to claim the item — then carry it into ODOOM, OQUAKE, or any connected world. The same keycard that opens a door in ODOOM might have been sitting under a park bench all along.</p>
+        <p>Keycards, weapons, armour, health packs, and powerups are hidden at GPS coordinates in parks and public spaces around the world. Open the <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> companion app, visit the location in real life to claim the item — then carry it into ODOOM, OQUAKE, or any connected world. The same keycard that opens a door in ODOOM might have been sitting under a park bench all along.</p>
       </div>
       <div class="rw-card c-cyan">
         <div class="rw-icon">🥽</div>
         <h3>FIGHT MONSTERS IN REAL LIFE</h3>
-        <p>Coming soon via AR integration — ODOOM and OQUAKE enemies will be projected into your local park via augmented reality. With AR glasses taking off, you'll fight demons on your morning walk and level up on your lunchtime run. Real movement, real exercise, real gameplay — the park is your arena.</p>
+        <p>Coming soon via <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> AR integration — ODOOM and OQUAKE enemies will be projected into your local park via augmented reality. With AR glasses taking off, you'll fight demons on your morning walk and level up on your lunchtime run. Real movement, real exercise, real gameplay — the park is your arena.</p>
       </div>
       <div class="rw-card c-gold">
         <div class="rw-icon">🌍</div>
@@ -870,7 +910,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
       <h2>You Are the Doom Slayer</h2>
     </div>
     <div class="become-intro reveal">
-      <p>OGEngine doesn't just connect games — it connects <strong>your real life to your in-game power</strong>. The more good you do in the real world through Our World, the stronger your avatar becomes across every connected game. Pick up litter, exercise, eat well, help your community, spend time in nature — and watch your Doom Slayer become genuinely, measurably harder to kill. This is the true metaverse: real life and digital life becoming one.</p>
+      <p>OGEngine doesn't just connect games — it connects <strong>your real life to your in-game power</strong>. The more good you do in the real world through <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>, the stronger your avatar becomes across every connected game. Pick up litter, exercise, eat well, help your community, spend time in nature — and watch your Doom Slayer become genuinely, measurably harder to kill. This is the true metaverse: real life and digital life becoming one.</p>
     </div>
     <div class="become-grid reveal">
 
@@ -878,7 +918,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
         <span class="become-card-icon">🦸</span>
         <div class="become-card-title">Karma Powers Your Avatar</div>
         <div class="become-card-body">
-          <p>Every positive real-world action earns karma in Our World — and that karma directly upgrades your avatar's stats across ODOOM, OQUAKE and every connected game. The more you level up in real life, the more powerful you become in-game.</p>
+          <p>Every positive real-world action earns karma in <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> — and that karma directly upgrades your avatar's stats across ODOOM, OQUAKE and every connected game. The more you level up in real life, the more powerful you become in-game.</p>
           <div class="karma-actions">
             <span class="karma-pill">PICK UP LITTER</span>
             <span class="karma-pill">EXERCISE</span>
@@ -918,7 +958,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
         <span class="become-card-icon">⚙️</span>
         <div class="become-card-title">Fully Configurable — Every Rule, Every Server</div>
         <div class="become-card-body">
-          <p>Every aspect of gameplay is controlled via <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">oasisstar.json</code> — configurable locally or on the server — so operators, tournament organisers, and modders can define their own rules. Disable stacking for a hardcore server. Enable auto-use on pickup for a speed-run mode. Choose exactly which items and monster kills get minted as NFTs. Set custom max health and armor caps for different tournament tiers. In future, all of these settings will also be configurable directly through <a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">OPORTAL</a> and <a href="https://starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">STARNET</a>. The possibilities are endless.</p>
+          <p>Every aspect of gameplay is controlled via <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/OASIS%20Omniverse/ODOOM/build/oasisstar.json" target="_blank" rel="noopener"><code style="color:var(--gold);font-family:'Share Tech Mono',monospace">oasisstar.json</code></a> — configurable locally or on the server — so operators, tournament organisers, and modders can define their own rules. Disable stacking for a hardcore server. Enable auto-use on pickup for a speed-run mode. Choose exactly which items and monster kills get minted as NFTs. Set custom max health and armor caps for different tournament tiers. In future, all of these settings will also be configurable directly through <a href="https://oportal.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">OPORTAL</a> and <a href="https://starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">STARNET</a>. The possibilities are endless.</p>
           <div class="config-grid">
             <div class="config-row"><span class="config-key">stack_weapons</span><span class="config-val">0 / 1</span></div>
             <div class="config-row"><span class="config-key">stack_armor</span><span class="config-val">0 / 1</span></div>
@@ -953,12 +993,16 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
     </div>
     <div class="quest-intro reveal">
       <div class="rift-banner">⚠ SPACE/TIME CONTINUUM BREACH DETECTED — MULTIVERSE RIFTS OPENING ⚠</div>
-      <p>The UAC scientists have really done it this time. In their obsession with pushing the OASIS beyond the limits of known space, they've ripped a hole in the space/time continuum itself — tearing open rifts across the multiverse. Creatures, artefacts, and entire map fragments are bleeding through from parallel universes. Quake monsters are appearing in Doom's corridors. Doom demons are stalking Quake's gothic towers. Keys found in one world unlock doors in another, and only items collected in Our World hold the power to close the rifts for good.</p>
+      <p>The UAC scientists have really done it this time. In their obsession with pushing the OASIS beyond the limits of known space, they've ripped a hole in the space/time continuum itself — tearing open rifts across the multiverse. Creatures, artefacts, and entire map fragments are bleeding through from parallel universes. Quake monsters are appearing in Doom's corridors. Doom demons are stalking Quake's gothic towers. Keys found in one world unlock doors in another, and only items collected in <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> hold the power to close the rifts for good.</p>
       <p style="margin-top:1rem">This is a never-ending story — a multi-chapter epic that begins later this year and expands into every new game that joins the OASIS Omniverse. Every world added brings new chapters, new twists, and new plot threads woven into the same living narrative. Stay tuned.</p>
+    </div>
+    <div class="psd-teaser reveal">
+      <div class="psd-label">⬡ THE BRIDGE BETWEEN WORLDS</div>
+      <p>In Quake's dimensions, Champions have recovered an artefact of alien origin: the <strong>Phase Shift Device</strong>. It is what makes crossing between worlds, dimensions, and universes possible — and it is the foundation the entire OASIS Omniverse is built on. In the real world, the PSD is your phone running <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>. The most powerful device in the multiverse is already in your pocket.</p>
     </div>
     <div class="quest-chapters reveal">
       <div class="chapter-tile ch-1">
-        <div class="chapter-num">CHAPTER I</div>
+        <div class="chapter-num">CHAPTER I · COMING Q3/Q4 2026 · SHAREWARE</div>
         <div class="chapter-title">Hell's Gate</div>
         <div class="chapter-flow">
           <span style="color:#ff3333">ODOOM</span> <span style="color:rgba(255,255,255,.3)">→</span>
@@ -967,7 +1011,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
           <span style="color:#00e5ff">OUR WORLD</span> <span style="color:rgba(255,255,255,.3)">→</span>
           <span style="color:#ff3333">ODOOM</span>
         </div>
-        <div class="chapter-desc">The UAC facility is overrun and the fabric of reality is tearing. Slip gate anomalies drag you into Quake's keeps where you find a runic key — bring it back to DOOM to open the next wing. A real-world artefact hidden in Our World holds the only seal capable of closing the breach. Return to the UAC for the final confrontation.</div>
+        <div class="chapter-desc">The UAC facility is overrun and the fabric of reality is tearing. Slip gate anomalies drag you into Quake's keeps where you find a runic key — bring it back to DOOM to open the next wing. A real-world artefact hidden in <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> holds the only seal capable of closing the breach. Return to the UAC for the final confrontation.</div>
       </div>
       <div class="chapter-tile ch-2">
         <div class="chapter-num">CHAPTER II</div>
@@ -1017,11 +1061,11 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
     <div class="section-head reveal">
       <div class="section-kicker">FOR GAME DEVELOPERS</div>
       <h2>Integrate Your Game in Hours</h2>
-      <p>OGEngine exposes the full OASIS ecosystem through the STAR API Client — a C# Native AOT library that exports a native C ABI, giving your C or C++ game native-speed access to shared inventory, avatar SSO, quests, karma, and more.</p>
+      <p>OGEngine exposes the full OASIS ecosystem through the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API Client</a> — a C# Native AOT library that exports a native C ABI, giving your C or C++ game native-speed access to shared inventory, avatar SSO, quests, karma, and more.</p>
     </div>
     <div class="dev-grid reveal">
       <div class="dev-text">
-        <h2>Powered by the <span>STAR API Client</span></h2>
+        <h2>Powered by the <span><a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API Client</a></span></h2>
         <p>The STAR API Client is written in C# and compiled with <strong style="color:var(--text)">Native AOT (Ahead-of-Time)</strong> — it ships as <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.dll</code> / <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.lib</code> exposing a standard C ABI via AOT native bindings. Your C or C++ game links against it and calls <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">star_api_*</code> functions at native speed — no .NET runtime shipped with your game, no managed overhead at all.</p>
         <p>The client acts as middleware between your game and the two OASIS API layers: <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a> handles identity, avatar profiles, wallets, and persistence; <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> drives quests, GeoHotSpots, objectives, and STARNET holons. The client locally merges quest progress so your game never makes raw HTTP calls.</p>
         <p>Ships with offline mode and cloud resynchronisation, auto failover, auto load-balancing, auto-replication, built-in caching, batching, and multithreading. Runs on Windows, Linux, and macOS.</p>
@@ -1064,6 +1108,43 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
 <span class="cm">// Mint a kill as an NFT</span>
 <span class="fn">star_api_nft_mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span></pre>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SINGULARITY -->
+<section id="singularity" style="background:linear-gradient(180deg,rgba(0,0,0,0),rgba(255,51,85,.05),rgba(240,165,0,.04),rgba(0,229,255,.04),rgba(0,0,0,0))">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">THE OASIS OMNIVERSE ENDGAME</div>
+      <h2>The Singularity</h2>
+    </div>
+    <p class="singularity-intro reveal">Every metaverse platform has promised seamless worlds. None have delivered. The OASIS Omniverse is different — not because of the promise, but because the infrastructure to fulfil it already exists. OGEngine is the layer that makes it real.</p>
+    <div class="singularity-cards reveal">
+      <div class="singularity-card">
+        <div class="singularity-card-icon">🌀</div>
+        <div class="singularity-card-title">CROSS-GAME TELEPORTATION</div>
+        <p class="singularity-card-desc">Walk through a portal in ODOOM and step out into OQuake's arena. No menu. No load screen. No boundary. The ODOOM Editor will let anyone place and configure these cross-game teleports — between maps, between games, between worlds.</p>
+      </div>
+      <div class="singularity-card">
+        <div class="singularity-card-icon">🏗️</div>
+        <div class="singularity-card-title">PORTAL EDITOR</div>
+        <p class="singularity-card-desc">The ODOOM Editor already supports full map editing with Doom and Quake asset placement. Once the OASIS OS/HUB is complete, it will allow placement and configuration of cross-game portals — teleports that carry your avatar, inventory and karma seamlessly into any connected world.</p>
+      </div>
+      <div class="singularity-card">
+        <div class="singularity-card-icon">∞</div>
+        <div class="singularity-card-title">THE MERGING</div>
+        <p class="singularity-card-desc">As more games are ported into the OASIS Omniverse, the portal network grows. Every new title is another node. The boundaries don't just blur — they dissolve entirely. Separate games become one infinite, seamless world. This is the Singularity.</p>
+      </div>
+      <div class="singularity-card">
+        <div class="singularity-card-icon">🧬</div>
+        <div class="singularity-card-title">ONE AVATAR. EVERY WORLD.</div>
+        <p class="singularity-card-desc">Your OASIS Avatar, inventory, karma and achievements are persistent across every world you step into. When you walk through a portal, everything comes with you — your weapons, your stats, your identity. One sovereign player. Infinite worlds. No restarting. No re-logging. Just play.</p>
+      </div>
+    </div>
+    <div class="singularity-quote reveal">
+      <div class="singularity-quote-line">"The Oasis. You could go anywhere, do anything."</div>
+      <div class="singularity-quote-sub">— Ready Player One · This is what we're building.</div>
     </div>
   </div>
 </section>
@@ -1122,57 +1203,57 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
     </div>
     <div class="rm-grid">
       <div class="rm-tile done reveal">
-        <div class="rm-badge done">DONE</div>
         <div class="rm-kicker gold">PHASE 1</div>
         <h3>Core Runtime &amp; SDK</h3>
-        <p>Shared inventory, avatar SSO, karma propagation, cross-game quests, and NFT minting live via the STAR API Client. Our World, ODOOM, and OQUAKE all connected.</p>
+        <p>Shared inventory, avatar SSO, karma propagation, cross-game quests, and NFT minting live via the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API Client</a>. <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>, ODOOM, and OQUAKE all connected.</p>
+        <div class="rm-badge done">DONE</div>
       </div>
       <div class="rm-tile active reveal">
-        <div class="rm-badge active">IN PROGRESS</div>
         <div class="rm-kicker gold">PHASE 2</div>
         <h3>Real-World Item Discovery</h3>
-        <p>GPS-anchored item caches hidden in parks globally. Players physically visit locations to claim weapons, armour, keycards, and powerups for use in any connected world.</p>
+        <p>GPS-anchored item caches hidden in parks globally. Players use the <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> companion app to physically visit locations and claim weapons, armour, keycards, and powerups for use in any connected world.</p>
+        <div class="rm-badge active">IN PROGRESS</div>
       </div>
       <div class="rm-tile active reveal">
-        <div class="rm-badge active">IN PROGRESS</div>
         <div class="rm-kicker gold">PHASE 3</div>
         <h3>NFT Economy</h3>
         <p>NFT minting is live — boss kills, rare finds, and legendary items are already minted as verifiable on-chain collectables. The OASIS Marketplace is in progress and coming soon, with plans to expand it significantly with much more to come.</p>
+        <div class="rm-badge active">IN PROGRESS</div>
       </div>
       <div class="rm-tile active reveal">
-        <div class="rm-badge active">IN PROGRESS</div>
         <div class="rm-kicker gold">PHASE 4</div>
         <h3>OASIS OS / HUB / HUD</h3>
         <p>The unified OASIS Operating System — a persistent HUB letting players teleport between any map in any game instantly, with a shared HUD for inventory, quests, friends, messages, and avatar stats across every connected world.</p>
+        <div class="rm-badge active">IN PROGRESS</div>
       </div>
       <div class="rm-tile active reveal">
-        <div class="rm-badge active">IN PROGRESS</div>
         <div class="rm-kicker gold">PHASE 5</div>
         <h3>Epic Cross-Game Quest Line</h3>
-        <p>A multi-chapter story spanning ODOOM, OQUAKE, Our World and beyond — beginning later this year. UAC scientists have torn a hole in the space/time continuum, bleeding monsters and artefacts across the multiverse. Every chapter weaves through multiple worlds. The story never ends.</p>
+        <p>A multi-chapter story spanning ODOOM, OQUAKE, <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> and beyond — beginning later this year. UAC scientists have torn a hole in the space/time continuum, bleeding monsters and artefacts across the multiverse. Every chapter weaves through multiple worlds. The story never ends.</p>
+        <div class="rm-badge active">IN PROGRESS</div>
       </div>
       <div class="rm-tile soon reveal">
-        <div class="rm-badge soon">COMING SOON</div>
         <div class="rm-kicker cyan">PHASE 6</div>
         <h3>AR Monster Combat</h3>
-        <p>Project ODOOM and OQUAKE enemies into real-world parks via augmented reality. Fight demons on your morning run, level up on your lunchtime walk — exercise as gameplay.</p>
+        <p>Powered by <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a> — project ODOOM and OQUAKE enemies into real-world parks via augmented reality. Fight demons on your morning run, level up on your lunchtime walk — exercise as gameplay.</p>
+        <div class="rm-badge soon">COMING SOON</div>
       </div>
       <div class="rm-tile soon reveal">
-        <div class="rm-badge soon">COMING SOON</div>
         <div class="rm-kicker cyan">PHASE 7</div>
         <h3>AI Monsters &amp; NPCs</h3>
         <p>Frontier AI agents — Claude, ChatGPT, Grok, Gemini, DeepSeek and others — take control of monsters and NPCs. AI Tournaments pit agents against each other as Cyberdemons. Battle modes where agents coordinate, learn your strategies, and evolve. The possibilities are endless.</p>
+        <div class="rm-badge soon">COMING SOON</div>
       </div>
       <div class="rm-tile soon reveal">
-        <div class="rm-badge soon">COMING SOON</div>
         <div class="rm-kicker cyan">PHASE 8</div>
         <h3>Expanding the Omniverse</h3>
         <p>Porting Doom 3, Wolfenstein 3D, Duke Nukem 3D, Quake II, Quake III Arena, a Minecraft clone, a Morrowind MMORPG clone, and many more into the OASIS Omniverse — every new title inheriting the full cross-game ecosystem from day one.</p>
+        <div class="rm-badge soon">COMING SOON</div>
       </div>
       <div class="rm-tile future reveal">
         <div class="rm-kicker dim">ALWAYS EVOLVING</div>
         <h3>More Worlds. More Reality.</h3>
-        <p>Cross-game guilds, shared world events, real-world tournament integration, OLAND digital land for OGEngine games, multiplayer AR battles, and much more on the horizon...</p>
+        <p>Cross-game guilds, shared world events, real-world tournament integration, OLAND digital land for OGEngine games, multiplayer AR battles, OIDE visual quest builder with built-in no-code quest creation, and much more on the horizon...</p>
       </div>
     </div>
   </div>
@@ -1267,7 +1348,10 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
+    <div style="border-top:1px solid var(--border);padding-top:1.5rem;text-align:center">
+      <p style="font-size:.72rem;color:#a8bfd8;max-width:860px;margin:0 auto;line-height:1.6">DOOM&reg; and Quake&reg; are registered trademarks of id Software LLC, a ZeniMax Media company. ODOOM and OQUAKE are independent fan modifications built on GPL-licensed engines and are not affiliated with, endorsed by, or sponsored by id Software, ZeniMax Media, or Bethesda Softworks. All DOOM and Quake game assets remain the property of their respective owners.</p>
+    </div>
+    <div class="foot-bottom" style="border-top:none;padding-top:1rem">
       <p>&copy; 2026 <a href="https://nextgenworld.co.uk">NextGen Software Ltd.</a> All rights reserved.</p>
       <p>Part of the <a href="https://oasisomniverse.one" target="_blank" rel="noopener">OASIS Omniverse</a> ecosystem.</p>
     </div>
