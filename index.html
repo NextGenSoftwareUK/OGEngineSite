@@ -61,8 +61,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .btn-outline-cyan{border:1px solid var(--cyan);color:var(--cyan);padding:.75rem 2rem;border-radius:5px;font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:background .2s}
 .btn-outline-cyan:hover{background:rgba(0,229,255,.1)}
 
-/* hero SVG network */
-#hero-svg{order:10;display:block;width:100%;max-width:860px;margin-top:40px;pointer-events:none;opacity:.85}
+/* hero canvas network */
+#hero-canvas{order:10;display:block;width:100%;margin-top:40px;pointer-events:none}
 
 /* ── SECTIONS ── */
 section{position:relative;z-index:1}
@@ -376,89 +376,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
 
 <!-- HERO -->
 <section id="hero">
-  <svg id="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#f0a500" stop-opacity=".15"/>
-        <stop offset="100%" stop-color="#030714" stop-opacity="0"/>
-      </radialGradient>
-      <filter id="glow-gold"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      <filter id="glow-sm"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-
-    <!-- center glow -->
-    <ellipse cx="600" cy="350" rx="320" ry="220" fill="url(#rg1)"/>
-
-    <!-- Connection lines: center hub → corner nodes -->
-    <line x1="600" y1="350" x2="110" y2="175" stroke="#00cc88" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
-      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.5s" repeatCount="indefinite"/>
-    </line>
-    <line x1="600" y1="350" x2="1090" y2="175" stroke="#ff4455" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
-      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.1s" repeatCount="indefinite"/>
-    </line>
-    <line x1="600" y1="350" x2="110" y2="605" stroke="#f0a500" stroke-width="1.2" stroke-dasharray="6,4" opacity=".5">
-      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2.8s" repeatCount="indefinite"/>
-    </line>
-    <line x1="600" y1="350" x2="1090" y2="605" stroke="#00e5ff" stroke-width="1" stroke-dasharray="4,6" opacity=".35">
-      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3.2s" repeatCount="indefinite"/>
-    </line>
-
-    <!-- Data pulses – outward and inward -->
-    <circle r="10" fill="#00cc88" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.5s" repeatCount="indefinite" path="M600,350 L110,175"/>
-    </circle>
-    <circle r="10" fill="#ff4455" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.1s" repeatCount="indefinite" path="M600,350 L1090,175"/>
-    </circle>
-    <circle r="10" fill="#f0a500" opacity=".9" filter="url(#glow-sm)">
-      <animateMotion dur="2.8s" repeatCount="indefinite" path="M600,350 L110,605"/>
-    </circle>
-    <circle r="8" fill="#00e5ff" opacity=".6" filter="url(#glow-sm)">
-      <animateMotion dur="3.2s" repeatCount="indefinite" path="M600,350 L1090,605"/>
-    </circle>
-    <circle r="10" fill="#00cc88" opacity=".7" filter="url(#glow-sm)">
-      <animateMotion dur="2.5s" begin="1.25s" repeatCount="indefinite" path="M110,175 L600,350"/>
-    </circle>
-    <circle r="10" fill="#ff4455" opacity=".7" filter="url(#glow-sm)">
-      <animateMotion dur="2.1s" begin="1.05s" repeatCount="indefinite" path="M1090,175 L600,350"/>
-    </circle>
-    <circle r="10" fill="#f0a500" opacity=".7" filter="url(#glow-sm)">
-      <animateMotion dur="2.8s" begin="1.4s" repeatCount="indefinite" path="M110,605 L600,350"/>
-    </circle>
-    <circle r="8" fill="#00e5ff" opacity=".5" filter="url(#glow-sm)">
-      <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M1090,605 L600,350"/>
-    </circle>
-
-    <!-- Center: OGEngine branded hub -->
-    <circle cx="600" cy="350" r="100" fill="rgba(240,165,0,.12)" stroke="#f0a500" stroke-width="1.5" filter="url(#glow-gold)">
-      <animate attributeName="r" values="100;112;100" dur="3s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="600" cy="350" r="84" fill="rgba(5,12,35,.9)" stroke="rgba(240,165,0,.35)" stroke-width="1"/>
-    <text x="600" y="340" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="34" fill="#f0a500" font-weight="900" letter-spacing="1">OG</text>
-    <text x="600" y="368" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="18" fill="#f0a500" font-weight="700" letter-spacing="3">ENGINE</text>
-    <!-- Orbit ring -->
-    <ellipse cx="600" cy="350" rx="180" ry="120" fill="none" stroke="rgba(240,165,0,.1)" stroke-width="1" stroke-dasharray="8,4">
-      <animateTransform attributeName="transform" type="rotate" from="0 600 350" to="360 600 350" dur="22s" repeatCount="indefinite"/>
-    </ellipse>
-
-    <!-- Node: Our World — top-left corner -->
-    <circle cx="110" cy="175" r="90" fill="rgba(0,204,136,.1)" stroke="#00cc88" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="110" y="163" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="20" fill="#00cc88" font-weight="700">OUR</text>
-    <text x="110" y="190" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="20" fill="#00cc88" font-weight="700">WORLD</text>
-
-    <!-- Node: ODOOM — top-right corner -->
-    <circle cx="1090" cy="175" r="90" fill="rgba(255,68,85,.1)" stroke="#ff4455" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="1090" y="175" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="20" fill="#ff4455" font-weight="700">ODOOM</text>
-
-    <!-- Node: OQUAKE — bottom-left corner -->
-    <circle cx="110" cy="605" r="90" fill="rgba(240,165,0,.1)" stroke="#f0a500" stroke-width="1.2" filter="url(#glow-sm)"/>
-    <text x="110" y="605" text-anchor="middle" dominant-baseline="central" font-family="Orbitron,sans-serif" font-size="20" fill="#f0a500" font-weight="700">OQUAKE</text>
-
-    <!-- Node: Your Game — bottom-right corner, dashed -->
-    <circle cx="1090" cy="605" r="90" fill="rgba(0,229,255,.05)" stroke="#00e5ff" stroke-width="1" stroke-dasharray="5,3" opacity=".6"/>
-    <text x="1090" y="593" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="18" fill="#00e5ff" opacity=".7" font-weight="700">YOUR</text>
-    <text x="1090" y="617" text-anchor="middle" dominant-baseline="auto" font-family="Orbitron,sans-serif" font-size="18" fill="#00e5ff" opacity=".7" font-weight="700">GAME →</text>
-  </svg>
+  <canvas id="hero-canvas"></canvas>
 
   <div class="hero-inner">
     <div class="hero-kicker">OASIS OMNIVERSE GAME RUNTIME</div>
@@ -1360,6 +1278,239 @@ a:hover{filter:drop-shadow(0 0 8px rgba(240,165,0,1)) drop-shadow(0 0 20px rgba(
 </footer>
 
 <script>
+// ── OGENGINE HERO CANVAS ──
+(function(){
+  const cv = document.getElementById('hero-canvas');
+  if(!cv) return;
+  const ctx = cv.getContext('2d');
+  const W = 1400, H = 1100;
+  cv.width = W; cv.height = H;
+  const cx = W/2, cy = H/2;
+  const HUB_R = 160, ORBIT_R = 400, NODE_R = 108;
+
+  function c2r(hex,a){
+    const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  const NODES = [
+    {id:'ODOOM',    sub:'DOOM REIMAGINED',   col:'#ff3355', ang:  0},
+    {id:'OQUAKE',   sub:'ARENA EVOLVED',     col:'#ff8800', ang: 60},
+    {id:'OUR WORLD',sub:'AR · GEO · KARMA',  col:'#00cc88', ang:120},
+    {id:'OPORTAL',  sub:'THE GATEWAY',       col:'#00e5ff', ang:180},
+    {id:'STAR API', sub:'WEB5 RUNTIME',      col:'#8b5cf6', ang:240},
+    {id:'YOUR GAME',sub:'INTEGRATE NOW →',   col:'#a0b8d0', ang:300, dashed:true},
+  ];
+  NODES.forEach(n=>{
+    const r = n.ang * Math.PI/180;
+    n.x = cx + Math.cos(r)*ORBIT_R;
+    n.y = cy + Math.sin(r)*ORBIT_R;
+  });
+
+  const LABELS = ['AVATAR SSO','KARMA','INVENTORY','QUESTS','NFTs','SUPERPOWERS','TELEPORT','ITEMS','ACHIEVEMENTS','STATS'];
+
+  // Two packets per connection (outbound + inbound), staggered
+  const packets = [];
+  NODES.forEach((n,i)=>{
+    packets.push({x1:cx,y1:cy,x2:n.x,y2:n.y, t:i/NODES.length,        speed:0.0032+Math.random()*0.0018, col:n.col, lbl:LABELS[i%LABELS.length]});
+    packets.push({x1:n.x,y1:n.y,x2:cx,y2:cy, t:(i+0.5)/NODES.length,  speed:0.0032+Math.random()*0.0018, col:n.col, lbl:LABELS[(i+4)%LABELS.length]});
+  });
+
+  // Karma sparkles rising from Our World
+  const ow = NODES[2];
+  const sparks = Array.from({length:18},()=>mkSpark());
+  function mkSpark(){
+    return {x:ow.x+(Math.random()-.5)*90, y:ow.y+(Math.random()-.5)*60,
+            vx:(Math.random()-.5)*.35, vy:-(Math.random()*1.1+.3),
+            life:Math.random()*2, max:1.8+Math.random()*2, r:.8+Math.random()*1.6};
+  }
+
+  // Occasional pulse ring from a random node
+  const pulses = [];
+  let nextPulse = 1.5;
+
+  let T = 0, lastT = 0;
+
+  function drawHub(t){
+    // Ambient glow
+    const g = ctx.createRadialGradient(cx,cy,0,cx,cy,HUB_R*3);
+    g.addColorStop(0,c2r('#f0a500',.16)); g.addColorStop(1,c2r('#f0a500',0));
+    ctx.beginPath(); ctx.arc(cx,cy,HUB_R*3,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+
+    // Slow outer orbit dash (clockwise)
+    ctx.save(); ctx.translate(cx,cy); ctx.rotate(t*.28);
+    ctx.beginPath(); ctx.arc(0,0,HUB_R+26,0,Math.PI*2);
+    ctx.setLineDash([10,7]); ctx.strokeStyle=c2r('#f0a500',.2); ctx.lineWidth=1; ctx.stroke();
+    ctx.setLineDash([]); ctx.restore();
+
+    // Counter-rotate finer dash
+    ctx.save(); ctx.translate(cx,cy); ctx.rotate(-t*.16);
+    ctx.beginPath(); ctx.arc(0,0,HUB_R+14,0,Math.PI*2);
+    ctx.setLineDash([4,12]); ctx.strokeStyle=c2r('#f0a500',.12); ctx.lineWidth=1; ctx.stroke();
+    ctx.setLineDash([]); ctx.restore();
+
+    // Breathing outer ring
+    const pulse = .5+.5*Math.sin(t*2.1);
+    ctx.beginPath(); ctx.arc(cx,cy,HUB_R+38+pulse*10,0,Math.PI*2);
+    ctx.strokeStyle=c2r('#f0a500',.05+pulse*.06); ctx.lineWidth=1.5; ctx.stroke();
+
+    // Main ring
+    ctx.beginPath(); ctx.arc(cx,cy,HUB_R,0,Math.PI*2);
+    ctx.strokeStyle=c2r('#f0a500',.8); ctx.lineWidth=1.5; ctx.stroke();
+    // Fill
+    ctx.beginPath(); ctx.arc(cx,cy,HUB_R-1.5,0,Math.PI*2);
+    ctx.fillStyle='rgba(3,7,20,.94)'; ctx.fill();
+    // Inner ring
+    ctx.beginPath(); ctx.arc(cx,cy,HUB_R-18,0,Math.PI*2);
+    ctx.strokeStyle=c2r('#f0a500',.18); ctx.lineWidth=1; ctx.stroke();
+
+    // Radar sweep inside hub
+    ctx.save(); ctx.translate(cx,cy);
+    ctx.rotate(t*.9);
+    // Sweep arc
+    ctx.beginPath(); ctx.moveTo(0,0);
+    ctx.arc(0,0,HUB_R-19,-.08,.55);
+    ctx.closePath();
+    const sw = ctx.createRadialGradient(0,0,0,0,0,HUB_R-19);
+    sw.addColorStop(0,c2r('#f0a500',0)); sw.addColorStop(.7,c2r('#f0a500',.08)); sw.addColorStop(1,c2r('#f0a500',0));
+    ctx.fillStyle=sw; ctx.fill();
+    // Sweep line
+    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(HUB_R-20,0);
+    ctx.strokeStyle=c2r('#f0a500',.45); ctx.lineWidth=1.2; ctx.stroke();
+    ctx.restore();
+
+    // Text
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.font='900 56px Orbitron,sans-serif';
+    ctx.fillStyle='#f0a500'; ctx.fillText('OG',cx,cy-22);
+    ctx.font='700 23px Orbitron,sans-serif';
+    ctx.fillStyle='#f0a500'; ctx.fillText('ENGINE',cx,cy+18);
+    ctx.font='13px "Share Tech Mono",monospace';
+    ctx.fillStyle=c2r('#f0a500',.9); ctx.fillText('OASIS OMNIVERSE',cx,cy+46);
+  }
+
+  function drawOrbitRing(){
+    ctx.beginPath(); ctx.arc(cx,cy,ORBIT_R,0,Math.PI*2);
+    ctx.strokeStyle='rgba(255,255,255,.04)'; ctx.lineWidth=1; ctx.stroke();
+  }
+
+  function drawConnections(t){
+    NODES.forEach((n,i)=>{
+      // animated dash offset
+      const spd = [2.5,2.1,2.8,3.2,2.4,3.0][i];
+      const off = -(t/spd * 10) % 12;
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(n.x,n.y);
+      ctx.setLineDash([6,6]); ctx.lineDashOffset=off;
+      ctx.strokeStyle=c2r(n.col,.22); ctx.lineWidth=1; ctx.stroke();
+      ctx.setLineDash([]); ctx.restore();
+    });
+  }
+
+  function drawNode(n,t){
+    const pulse = .5+.5*Math.sin(t*1.6+n.ang*.06);
+    // Glow
+    const g = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,NODE_R*2.4);
+    g.addColorStop(0,c2r(n.col,.13)); g.addColorStop(1,c2r(n.col,0));
+    ctx.beginPath(); ctx.arc(n.x,n.y,NODE_R*2.4,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    // Outer breathing ring
+    ctx.beginPath(); ctx.arc(n.x,n.y,NODE_R+6+pulse*5,0,Math.PI*2);
+    ctx.strokeStyle=c2r(n.col,.08+pulse*.06); ctx.lineWidth=1; ctx.stroke();
+    // Main ring
+    ctx.beginPath(); ctx.arc(n.x,n.y,NODE_R,0,Math.PI*2);
+    if(n.dashed) ctx.setLineDash([5,4]);
+    ctx.strokeStyle=c2r(n.col,.7+pulse*.18); ctx.lineWidth=1.3; ctx.stroke();
+    ctx.setLineDash([]);
+    // Fill
+    ctx.beginPath(); ctx.arc(n.x,n.y,NODE_R-1.5,0,Math.PI*2);
+    ctx.fillStyle='rgba(3,7,20,.91)'; ctx.fill();
+    // Inner ring
+    ctx.beginPath(); ctx.arc(n.x,n.y,NODE_R-16,0,Math.PI*2);
+    ctx.strokeStyle=c2r(n.col,.1+pulse*.08); ctx.lineWidth=1; ctx.stroke();
+    // Text
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    const words=n.id.split(' ');
+    if(words.length===1){
+      ctx.font='700 25px Orbitron,sans-serif';
+      ctx.fillStyle=n.col; ctx.fillText(words[0],n.x,n.y-14);
+    } else {
+      ctx.font='700 21px Orbitron,sans-serif';
+      ctx.fillStyle=n.col;
+      ctx.fillText(words[0],n.x,n.y-26);
+      ctx.fillText(words[1],n.x,n.y-2);
+    }
+    ctx.font='700 15px "Share Tech Mono",monospace';
+    ctx.fillStyle=c2r(n.col,.9); ctx.fillText(n.sub,n.x,n.y+34);
+  }
+
+  function drawPacket(p){
+    p.t += p.speed;
+    if(p.t>=1){ p.t=0; p.lbl=LABELS[Math.floor(Math.random()*LABELS.length)]; }
+    const x=p.x1+(p.x2-p.x1)*p.t, y=p.y1+(p.y2-p.y1)*p.t;
+    const t0=Math.max(0,p.t-.09);
+    const tx=p.x1+(p.x2-p.x1)*t0, ty=p.y1+(p.y2-p.y1)*t0;
+    // Trail
+    const tg=ctx.createLinearGradient(tx,ty,x,y);
+    tg.addColorStop(0,c2r(p.col,0)); tg.addColorStop(1,c2r(p.col,.55));
+    ctx.beginPath(); ctx.moveTo(tx,ty); ctx.lineTo(x,y);
+    ctx.strokeStyle=tg; ctx.lineWidth=4.5; ctx.stroke();
+    // Glow halo
+    const g=ctx.createRadialGradient(x,y,0,x,y,30);
+    g.addColorStop(0,c2r(p.col,.85)); g.addColorStop(1,c2r(p.col,0));
+    ctx.beginPath(); ctx.arc(x,y,30,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    // Core
+    ctx.beginPath(); ctx.arc(x,y,8,0,Math.PI*2); ctx.fillStyle=p.col; ctx.fill();
+    // Label midway
+    if(p.t>.28 && p.t<.72){
+      ctx.textAlign='center'; ctx.textBaseline='bottom';
+      ctx.font='12px "Share Tech Mono",monospace';
+      ctx.fillStyle=c2r(p.col,.88); ctx.fillText(p.lbl,x,y-16);
+    }
+  }
+
+  function drawSparks(dt){
+    sparks.forEach(s=>{
+      s.x+=s.vx; s.y+=s.vy; s.life+=dt;
+      if(s.life>s.max) Object.assign(s,mkSpark(),{life:0});
+      const a=Math.min(1,s.life/.4)*Math.max(0,1-s.life/s.max);
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=c2r('#f0a500',a*.75); ctx.fill();
+    });
+  }
+
+  function drawPulses(dt){
+    // Spawn
+    T += dt;
+    if(T>nextPulse){
+      const n=NODES[Math.floor(Math.random()*NODES.length)];
+      pulses.push({x:n.x,y:n.y,r:NODE_R,maxR:NODE_R+55,col:n.col,a:.6});
+      nextPulse=T+1.2+Math.random()*1.5;
+    }
+    for(let i=pulses.length-1;i>=0;i--){
+      const p=pulses[i];
+      p.r+=dt*55; p.a-=dt*.55;
+      if(p.a<=0){pulses.splice(i,1); continue;}
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.strokeStyle=c2r(p.col,p.a*.5); ctx.lineWidth=1.2; ctx.stroke();
+    }
+  }
+
+  function frame(ts){
+    const dt=Math.min((ts-lastT)/1000,.05); lastT=ts; T+=0;
+    const t=ts/1000;
+    ctx.clearRect(0,0,W,H);
+    drawOrbitRing();
+    drawConnections(t);
+    packets.forEach(p=>drawPacket(p));
+    drawPulses(dt);
+    NODES.forEach(n=>drawNode(n,t));
+    drawHub(t);
+    drawSparks(dt);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
 // ── STARS ──
 (function(){
   const c=document.getElementById('stars'),ctx=c.getContext('2d');
