@@ -45,6 +45,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{background:var(--gold);color:#000;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--gold);border-radius:2px;transition:transform .3s}
 
 /* -- HERO -- */
 #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;overflow:hidden;z-index:1}
@@ -228,14 +230,35 @@ footer a:hover{color:var(--gold);filter:drop-shadow(0 0 8px rgba(167,139,250,1))
   .games-grid,.rw-grid,.rm-grid{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
   nav .nav-links{display:none}
+  .nav-hamburger{display:flex}
   .rw-steps{flex-direction:column}
   .rw-step{border-right:none;border-bottom:1px solid var(--border)}
   .rw-step:last-child{border-bottom:none}
+  .feat-grid,.games-grid,.rm-grid,.meta-grid,.become-grid,.quest-chapters,.ai-modes,.singularity-cards,.vid-grid{
+    grid-template-columns:1fr !important;
+    gap:1rem;
+  }
+  .feat-card{padding:1.3rem}
+  .feat-card h3{font-size:.92rem}
+  .feat-card p{font-size:.95rem}
+  .game-body{padding:1.2rem}
 }
 @media(max-width:600px){
   .games-grid,.rw-grid,.rm-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
   .hero-btns,.dev-links,.cta-btns{flex-direction:column;align-items:center}
+}
+@media(max-width:520px){
+  .feat-card,.game-card .game-body,.rm-tile,.meta-card,.become-card,.chapter-tile,.ai-tile,.singularity-card{
+    padding:1rem;
+  }
+  .feat-card h3,.rm-tile h3,.meta-card-title,.become-card-title{font-size:.85rem;line-height:1.2}
+  .feat-card p,.rm-tile p,.meta-card-body,.become-card-body{font-size:.9rem;line-height:1.5}
+  .stat-row{gap:1rem}
+  .stat-box{padding:.7rem 1rem;min-width:90px}
+  .stat-box .num{font-size:1.2rem}
+  .section-head h2{font-size:clamp(1.3rem,7vw,1.8rem)}
+  .hero-sub{font-size:1.05rem}
 }
 a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgba(167,139,250,.8)) drop-shadow(0 0 40px rgba(167,139,250,.4))}
 /* -- TRIBUTE / META-GAMING -- */
@@ -367,13 +390,21 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   </a>
   <ul class="nav-links">
     <li><a href="#what">About</a></li>
+    <li><a href="#architecture">Architecture</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#games">Games</a></li>
+    <li><a href="#tribute">Tribute</a></li>
+    <li><a href="#realworld">Real World</a></li>
+    <li><a href="#become">Become the Hero</a></li>
+    <li><a href="#epic-quest">Epic Quest</a></li>
     <li><a href="#devs">Developers</a></li>
+    <li><a href="#singularity">Singularity</a></li>
+    <li><a href="#ai-combat">AI Combat</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a></li>
   </ul>
   <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="nav-cta">GITHUB</a>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
@@ -1571,6 +1602,22 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
   const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
+
+// -- MOBILE MENU --
+function toggleMenu(){
+  const links = document.querySelector('.nav-links');
+  if(links.style.display === 'flex'){
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(3,7,20,.97);padding:20px 28px;gap:18px;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)';
+  }
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    const links = document.querySelector('.nav-links');
+    if(window.innerWidth < 900) links.style.display = 'none';
+  });
+});
 </script>
 </body>
 </html>
