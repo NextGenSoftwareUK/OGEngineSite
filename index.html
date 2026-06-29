@@ -40,8 +40,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
 .nav-logo{width:36px;height:36px}
 .nav-brand span{font-family:'Orbitron',sans-serif;font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.08em}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.95rem;letter-spacing:.06em;transition:color .2s}
+.nav-links{display:flex;gap:1.1rem;list-style:none}
+.nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:.04em;transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{background:var(--gold);color:#000;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
@@ -225,12 +225,16 @@ footer a:hover{color:var(--gold);filter:drop-shadow(0 0 8px rgba(167,139,250,1))
 .reveal.visible{opacity:1;transform:none}
 
 /* -- RESPONSIVE -- */
+/* Nav has too many items (13) to fit even on most desktop screens at full size - switch
+   to the hamburger much earlier than the general content breakpoint below. */
+@media(max-width:1300px){
+  nav .nav-links{display:none}
+  .nav-hamburger{display:flex}
+}
 @media(max-width:900px){
   .what-grid,.dev-grid{grid-template-columns:1fr}
   .games-grid,.rw-grid,.rm-grid{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
-  nav .nav-links{display:none}
-  .nav-hamburger{display:flex}
   .rw-steps{flex-direction:column}
   .rw-step{border-right:none;border-bottom:1px solid var(--border)}
   .rw-step:last-child{border-bottom:none}
