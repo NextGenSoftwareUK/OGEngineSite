@@ -43,6 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-links{display:flex;gap:1.1rem;list-style:none}
 .nav-links a{color:#a8bfd8;text-decoration:none;font-weight:600;font-size:.82rem;letter-spacing:.04em;transition:color .2s;white-space:nowrap;text-transform:uppercase}
 .nav-links a:hover{color:var(--gold)}
+.nav-links-mobile-only{display:none}
 .nav-cta{background:var(--gold);color:#000;padding:.45rem 1.2rem;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:1000;position:relative}
@@ -243,6 +244,7 @@ footer a:hover{color:var(--gold);filter:drop-shadow(0 0 8px rgba(167,139,250,1))
   nav .nav-links.open{transform:translateX(0)}
   nav .nav-links li{margin:0;padding:0;width:100%}
   nav .nav-links a{display:block;padding:14px 0;font-size:.88rem;border-bottom:1px solid rgba(167,139,250,.1);width:100%}
+  .nav-links-mobile-only{display:list-item}
   .nav-hamburger{display:flex}
   .nav-cta{display:none}
 }
@@ -425,6 +427,8 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     <li><a href="#singularity">Singularity</a></li>
     <li><a href="#ai-combat">AI Combat</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li class="nav-links-mobile-only"><a href="https://oasisomniverse.one" target="_blank" rel="noopener">ECOSYSTEM</a></li>
+    <li class="nav-links-mobile-only"><a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener">GITHUB</a></li>
   </ul>
   <a href="https://oasisomniverse.one" target="_blank" rel="noopener" class="nav-cta">ECOSYSTEM</a>
   <a href="https://github.com/NextGenSoftwareUK/OASIS" target="_blank" rel="noopener" class="nav-cta">GITHUB</a>
