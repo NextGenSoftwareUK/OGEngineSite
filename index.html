@@ -228,8 +228,11 @@ footer a:hover{color:var(--gold);filter:drop-shadow(0 0 8px rgba(167,139,250,1))
 /* Nav has too many items (13) to fit even on most desktop screens at full size - switch
    to the hamburger much earlier than the general content breakpoint below. */
 @media(max-width:1300px){
-  nav .nav-links{display:none}
+  nav .nav-links{display:none;gap:0;margin:0;padding:0}
+  nav .nav-links li{margin:0;padding:0}
+  nav .nav-links a{display:block;padding:.55rem 1.25rem;font-size:.88rem;border-bottom:1px solid rgba(167,139,250,.1)}
   .nav-hamburger{display:flex}
+  .nav-cta{display:none}
 }
 @media(max-width:900px){
   .what-grid,.dev-grid{grid-template-columns:1fr}
@@ -459,7 +462,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <p>OGEngine is not a single library — it is the contract formed by three integrated layers that together give any game access to the full OASIS multiverse with zero backend infrastructure required.</p>
     </div>
     <div class="arch-wrap reveal">
-      <svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:580px;display:block">
+      <svg viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
         <defs>
           <filter id="ag-glow" x="-5%" y="-10%" width="110%" height="120%">
             <feGaussianBlur stdDeviation="3" result="b"/>
@@ -1613,7 +1616,7 @@ function toggleMenu(){
   if(links.style.display === 'flex'){
     links.style.display = 'none';
   } else {
-    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(3,7,20,.97);padding:20px 28px;gap:18px;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)';
+    links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(3,7,20,.97);padding:0;gap:0;border-bottom:1px solid var(--border);backdrop-filter:blur(12px);z-index:999';
   }
 }
 document.querySelectorAll('.nav-links a').forEach(a => {
