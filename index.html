@@ -657,7 +657,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <div class="feat-card reveal">
         <div class="feat-icon">✏️</div>
         <h3>MAP EDITOR & QUEST BUILDER</h3>
-        <p>Every major map editor across the 10 OGames is now fully integrated with OGEngine. <a href="https://github.com/NextGenSoftwareUK/ODOOM-Editor/releases/tag/ODOOM_Editor_v1.0.0_ALPHA" target="_blank" rel="noopener">ODOOM Editor</a> (UDB fork) has a STAR toolbar for live asset browsing, portal placement and quest binding. <strong>DarkRadiant/ODOOM3-Editor</strong> connects via the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">dm.oasis</code> plugin, <strong>TrenchBroom/OQuakeEditor</strong> uses OASIS FGD entity definitions for OQuake, OQuake2 and OQuake3, <strong>NetRadiant</strong> connects via the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">oasis_ogengine</code> plugin, and <strong>Mapster32</strong> via a standalone CLI companion. All editors access OGEngine through <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">ogeditor_api.dll</code> — a pure C ABI NativeAOT library — so no .NET knowledge is required in the editor codebase.</p>
+        <p>Every major map editor across the 10 OGames is now fully integrated with OGEngine. <a href="https://github.com/NextGenSoftwareUK/ODOOM-Editor/releases/tag/ODOOM_Editor_v1.0.0_ALPHA" target="_blank" rel="noopener">ODOOM Editor</a> (UDB fork) has a STAR toolbar for live asset browsing, portal placement and quest binding. <strong>DarkRadiant/ODOOM3-Editor</strong> connects via the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">dm.oasis</code> plugin, <strong>TrenchBroom/OQuakeEditor</strong> uses OASIS FGD entity definitions for OQuake, OQuake2 and OQuake3, <strong>NetRadiant</strong> connects via the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">oasis_ogengine</code> plugin, and <strong>Mapster32</strong> via a standalone CLI companion. All editors access OGEngine through <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">OGEditorClient.dll</code> — a pure C ABI NativeAOT library — so no .NET knowledge is required in the editor codebase.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🐾</div>
@@ -1278,7 +1278,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <div class="rm-tile active reveal">
         <div class="rm-kicker gold">PHASE 8</div>
         <h3>Expanding the Omniverse</h3>
-        <p>Seven new OGames now have full OGEngine integration code: <strong>ODOOM3</strong> (Doom 3), <strong>ODOOM3-BFG</strong> (BFG Edition), <strong>ODuke3D</strong> (Duke Nukem 3D), <strong>OWolf3D</strong> (Wolfenstein 3D), <strong>OQuake2</strong>, <strong>OQuake2-RTX</strong>, and <strong>OQuake3</strong> — all connected via the same <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">ogeditor_api.dll</code> C ABI and inheriting the full cross-game quest, inventory and karma ecosystem from day one.</p>
+        <p>Seven new OGames now have full OGEngine integration code: <strong>ODOOM3</strong> (Doom 3), <strong>ODOOM3-BFG</strong> (BFG Edition), <strong>ODuke3D</strong> (Duke Nukem 3D), <strong>OWolf3D</strong> (Wolfenstein 3D), <strong>OQuake2</strong>, <strong>OQuake2-RTX</strong>, and <strong>OQuake3</strong> — all connected via the same <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">OGEditorClient.dll</code> C ABI and inheriting the full cross-game quest, inventory and karma ecosystem from day one.</p>
         <div class="rm-badge active">IN PROGRESS</div>
       </div>
       <div class="rm-tile soon reveal">
@@ -1387,6 +1387,8 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <div class="foot-col">
         <h4>DOCS</h4>
         <ul>
+          <li><a href="https://docs.oasisomniverse.one" target="_blank" rel="noopener">OASIS Docs</a></li>
+          <li><a href="https://learn.oasisomniverse.one" target="_blank" rel="noopener">OASIS Learn</a></li>
           <li><a href="https://oasis-web4.gitbook.io/oasis-web4-docs/" target="_blank" rel="noopener">GitBook Docs</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/GETTING_STARTED_INDEX.md" target="_blank" rel="noopener">Getting Started</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/Docs/Devs/OASIS_Quick_Start_Guide.md" target="_blank" rel="noopener">Quick Start</a></li>
@@ -1415,9 +1417,9 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         <ul>
           <li><a href="https://discord.gg/q9gMKU6" target="_blank" rel="noopener">Discord</a></li>
           <li><a href="https://t.me/oasisweb4chat" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="https://x.com/OASISWEB4" target="_blank" rel="noopener">?? OASIS WEB4</a></li>
-          <li><a href="https://x.com/OurWorldTheGame" target="_blank" rel="noopener">?? Our World</a></li>
-          <li><a href="https://x.com/HoloNET_OASIS" target="_blank" rel="noopener">?? HoloNET</a></li>
+          <li><a href="https://x.com/OASISWEB4" target="_blank" rel="noopener">X / OASIS WEB4</a></li>
+          <li><a href="https://x.com/OurWorldTheGame" target="_blank" rel="noopener">X / Our World</a></li>
+          <li><a href="https://x.com/HoloNET_OASIS" target="_blank" rel="noopener">X / HoloNET</a></li>
           <li><a href="https://www.youtube.com/@WEB4OASIS" target="_blank" rel="noopener">YouTube OASIS</a></li>
           <li><a href="https://www.youtube.com/@ourworld-the-game" target="_blank" rel="noopener">YouTube Our World</a></li>
           <li><a href="https://www.youtube.com/channel/UC0_O4RwdY3lq1m3-K-njUxA" target="_blank" rel="noopener">YouTube Our World Legacy</a></li>
