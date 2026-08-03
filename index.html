@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -505,7 +505,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         <text x="794" y="41" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="12" fill="#a78bfa" font-weight="700">OUR WORLD</text>
         <text x="794" y="60" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#6a80a8">Unity / C#</text>
 
-        <!-- Connectors: game tier → STARAPIClient -->
+        <!-- Connectors: game tier → OGEngineClient -->
         <line x1="103" y1="77" x2="103" y2="118" stroke="rgba(167,139,250,.35)" stroke-width="1" stroke-dasharray="3,2"/>
         <line x1="448" y1="77" x2="448" y2="118" stroke="rgba(167,139,250,.35)" stroke-width="1" stroke-dasharray="3,2"/>
         <line x1="794" y1="77" x2="794" y2="118" stroke="rgba(167,139,250,.35)" stroke-width="1" stroke-dasharray="3,2"/>
@@ -517,10 +517,10 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         <circle r="3" fill="#a78bfa" opacity=".8"><animateMotion dur="1.6s" begin="0.4s" repeatCount="indefinite" path="M448,77 L448,116"/></circle>
         <circle r="3" fill="#a78bfa" opacity=".8"><animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite" path="M794,77 L794,116"/></circle>
 
-        <!-- --- STARAPIClient MIDDLEWARE (y=126 to y=234) --- -->
+        <!-- --- OGEngineClient MIDDLEWARE (y=126 to y=234) --- -->
         <rect x="15" y="126" width="870" height="108" rx="7" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="1.5" filter="url(#ag-glow)"/>
         <text x="22" y="140" font-family="Share Tech Mono,monospace" font-size="8" fill="rgba(167,139,250,.5)" letter-spacing="1.5">MIDDLEWARE</text>
-        <text x="450" y="158" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="16" fill="#a78bfa" font-weight="700" letter-spacing="1">STARAPIClient</text>
+        <text x="450" y="158" text-anchor="middle" font-family="Orbitron,sans-serif" font-size="16" fill="#a78bfa" font-weight="700" letter-spacing="1">OGEngineClient</text>
         <text x="450" y="178" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="9.5" fill="#a8bfd8">C# · NATIVE AOT · C ABI EXPORTS (star_api_*) · LOCAL QUEST MERGE · CACHING · BATCHING · MULTITHREADING</text>
         <text x="450" y="197" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="8.5" fill="#6a80a8">OFFLINE CAPABLE · AUTO FAILOVER · AUTO LOAD-BALANCING · AUTO-REPLICATION · WINDOWS · LINUX · macOS</text>
         <rect x="330" y="208" width="128" height="18" rx="3" fill="rgba(167,139,250,.15)" stroke="rgba(167,139,250,.3)" stroke-width="1"/>
@@ -528,7 +528,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         <rect x="468" y="208" width="90" height="18" rx="3" fill="rgba(167,139,250,.15)" stroke="rgba(167,139,250,.3)" stroke-width="1"/>
         <text x="513" y="220" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="8.5" fill="#a78bfa">native speed</text>
 
-        <!-- Connectors: STARAPIClient ? API tier (bottom=234) -->
+        <!-- Connectors: OGEngineClient ? API tier (bottom=234) -->
         <line x1="225" y1="234" x2="225" y2="272" stroke="rgba(0,229,255,.4)" stroke-width="1" stroke-dasharray="3,2"/>
         <line x1="675" y1="234" x2="675" y2="272" stroke="rgba(139,92,246,.4)" stroke-width="1" stroke-dasharray="3,2"/>
         <polygon points="222,269 225,278 228,269" fill="rgba(0,229,255,.5)"/>
@@ -563,7 +563,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <span class="arch-eq-op">+</span>
       <span class="arch-eq-pill violet">WEB5 STAR API</span>
       <span class="arch-eq-op">+</span>
-      <span class="arch-eq-pill gold">STARAPIClient</span>
+      <span class="arch-eq-pill gold">OGEngineClient</span>
       <span class="arch-eq-op">=</span>
       <span class="arch-eq-result">OGEngine</span>
     </div>
@@ -617,7 +617,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <div class="feat-card reveal">
         <div class="feat-icon">⚡</div>
         <h3>CACHING, BATCHING & MULTITHREADING</h3>
-        <p>Built for performance. <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">OGEngine's STAR API Client</a> handles request batching, intelligent caching, and multithreaded delivery so your game stays fast even with cross-world calls at scale.</p>
+        <p>Built for performance. <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">OGEngineClient</a> handles request batching, intelligent caching, and multithreaded delivery so your game stays fast even with cross-world calls at scale.</p>
       </div>
       <div class="feat-card reveal">
         <div class="feat-icon">🎯</div>
@@ -1092,12 +1092,12 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     <div class="section-head reveal">
       <div class="section-kicker">FOR GAME DEVELOPERS</div>
       <h2>Integrate Your Game in Hours</h2>
-      <p>OGEngine exposes the full OASIS ecosystem through the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API Client</a> — a C# Native AOT library that exports a native C ABI, giving your C or C++ game native-speed access to shared inventory, avatar SSO, quests, karma, and more.</p>
+      <p>OGEngine exposes the full OASIS ecosystem through the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">OGEngineClient</a> — a C# Native AOT library that exports a native C ABI, giving your C or C++ game native-speed access to shared inventory, avatar SSO, quests, karma, and more.</p>
     </div>
     <div class="dev-grid reveal">
       <div class="dev-text">
-        <h2>Powered by the <span><a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API Client</a></span></h2>
-        <p>The STAR API Client is written in C# and compiled with <strong style="color:var(--text)">Native AOT (Ahead-of-Time)</strong> — it ships as <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.dll</code> / <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.lib</code> exposing a standard C ABI via AOT native bindings. Your C or C++ game links against it and calls <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">star_api_*</code> functions at native speed — no .NET runtime shipped with your game, no managed overhead at all.</p>
+        <h2>Powered by the <span><a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">OGEngineClient</a></span></h2>
+        <p>The OGEngineClient is written in C# and compiled with <strong style="color:var(--text)">Native AOT (Ahead-of-Time)</strong> — it ships as <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.dll</code> / <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">star_api.lib</code> exposing a standard C ABI via AOT native bindings. Your C or C++ game links against it and calls <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">star_api_*</code> functions at native speed — no .NET runtime shipped with your game, no managed overhead at all.</p>
         <p>The client acts as middleware between your game and the two OASIS API layers: <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB4 OASIS API</a> handles identity, avatar profiles, wallets, and persistence; <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:none">WEB5 STAR API</a> drives quests, GeoHotSpots, objectives, and STARNET holons. The client locally merges quest progress so your game never makes raw HTTP calls.</p>
         <p>Ships with offline mode and cloud resynchronisation, auto failover, auto load-balancing, auto-replication, built-in caching, batching, and multithreading. Runs on Windows, Linux, and macOS.</p>
         <div class="tech-pills">
@@ -1236,7 +1236,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
       <div class="rm-tile done reveal">
         <div class="rm-kicker gold">PHASE 1</div>
         <h3>Core Runtime &amp; SDK</h3>
-        <p>Shared inventory, avatar SSO, karma propagation, cross-game quests, and NFT minting live via the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">STAR API Client</a>. <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>, ODOOM, and OQUAKE all connected.</p>
+        <p>Shared inventory, avatar SSO, karma propagation, cross-game quests, and NFT minting live via the <a href="https://api.starnet.oasisomniverse.one" target="_blank" rel="noopener">OGEngineClient</a>. <a href="https://ourworld.oasisomniverse.one" target="_blank" rel="noopener">Our World</a>, ODOOM, and OQUAKE all connected.</p>
         <div class="rm-badge done">DONE</div>
       </div>
       <div class="rm-tile active reveal">
@@ -1380,7 +1380,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
           <li><a href="https://www.nuget.org/profiles/dellams" target="_blank" rel="noopener">NuGet (50 pkgs)</a></li>
           <li><a href="https://marketplace.visualstudio.com/items?itemName=NextGenSoftware.oasis-ide" target="_blank" rel="noopener">OASIS IDE</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank" rel="noopener">STAR CLI/ODK</a></li>
-          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">STAR API Client</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">OGEngineClient</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/OASIS-Runtime-v4.5.1" target="_blank" rel="noopener">OASIS Runtime v4.5.1</a></li>
         </ul>
       </div>
