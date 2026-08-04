@@ -655,6 +655,11 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         <p>OGEngine provides full cross-game clan infrastructure — assign roles within your clan (farmer, combat specialist, scout), manage shared stockpiles of weapons, ammo, health and powerups across all connected games, coordinate supply drops to teammates mid-battle, and maintain emergency reserves for tournaments. A level of clan strategy no previous game has offered.</p>
       </div>
       <div class="feat-card reveal">
+        <div class="feat-icon">🛠️</div>
+        <h3>OGEditor SDK</h3>
+        <p>Build your own OASIS-aware map editor plugin using the OGEditor SDK — a C# NativeAOT library (<code style="color:var(--gold);font-family:'Share Tech Mono',monospace">OGEditorClient.dll</code>) exporting a pure C ABI. Gives any C/C++ editor plugin live access to OASIS inventory, avatar data, quests, karma and NFT minting without any .NET dependency. The same SDK powers the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">dm.oasis</code> DarkRadiant plugin, NetRadiant's <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">oasis_ogengine</code> plugin and the Mapster32 companion tool. <a href="https://github.com/NextGenSoftwareUK/UltimateDoomBuilder/releases" target="_blank" rel="noopener" style="color:var(--gold)">⬇️ Download OGEditor SDK</a></p>
+      </div>
+      <div class="feat-card reveal">
         <div class="feat-icon">✏️</div>
         <h3>MAP EDITOR & QUEST BUILDER</h3>
         <p>Every major map editor across the 10 OGames is now fully integrated with OGEngine. <a href="https://github.com/NextGenSoftwareUK/ODOOM-Editor/releases/tag/ODOOM_Editor_v1.0.0_ALPHA" target="_blank" rel="noopener">ODOOM Editor</a> (UDB fork) has a STAR toolbar for live asset browsing, portal placement and quest binding. <strong>DarkRadiant/ODOOM3-Editor</strong> connects via the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">dm.oasis</code> plugin, <strong>TrenchBroom/OQuakeEditor</strong> uses OASIS FGD entity definitions for OQuake, OQuake2 and OQuake3, <strong>NetRadiant</strong> connects via the <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">oasis_ogengine</code> plugin, and <strong>Mapster32</strong> via a standalone CLI companion. All editors access OGEngine through <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">OGEditorClient.dll</code> — a pure C ABI NativeAOT library — so no .NET knowledge is required in the editor codebase.</p>
@@ -1112,6 +1117,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
         </div>
         <div class="dev-links">
           <a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener" class="btn-primary">DOWNLOAD SDK</a>
+          <a href="https://github.com/NextGenSoftwareUK/UltimateDoomBuilder/releases" target="_blank" rel="noopener" class="btn-primary">OGEditor SDK</a>
           <a href="https://api.web4.oasisomniverse.one" target="_blank" rel="noopener" class="btn-outline-cyan">API DOCS</a>
         </div>
       </div>
@@ -1381,6 +1387,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
           <li><a href="https://marketplace.visualstudio.com/items?itemName=NextGenSoftware.oasis-ide" target="_blank" rel="noopener">OASIS IDE</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-ODK-Runtime-v3.5.0" target="_blank" rel="noopener">STAR CLI/ODK</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/STAR-API-CLIENT-v1.0.0" target="_blank" rel="noopener">OGEngine Client</a></li>
+          <li><a href="https://github.com/NextGenSoftwareUK/UltimateDoomBuilder/releases" target="_blank" rel="noopener">OGEditor SDK</a></li>
           <li><a href="https://github.com/NextGenSoftwareUK/OASIS/releases/tag/OASIS-Runtime-v4.5.1" target="_blank" rel="noopener">OASIS Runtime v4.5.1</a></li>
         </ul>
       </div>
