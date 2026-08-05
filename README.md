@@ -42,6 +42,12 @@ OGEngine is the shared game runtime powering all OASIS-connected worlds. It prov
 | OHexen | UZDoom (GZDoom fork) | In development |
 | OShadowWarrior | Raze | In development |
 | OShadowWarriorRT | Duke-RT (Raze fork, Vulkan RT) | In development |
+| OBlood | Raze | In development |
+| OExhumed | Raze | In development |
+| OStrife | UZDoom (GZDoom fork) | In development |
+| ODoom64 | Doom64 EX+ | In development |
+| OHexenII | uhexen2 (Hammer of Thyrion) | In development |
+| ORtCW | iortcw (Q3 engine) | In development |
 
 ### Generation 2 — Planned
 
