@@ -426,6 +426,7 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
     <li><a href="#become">Become the Hero</a></li>
     <li><a href="#epic-quest">Epic Quest</a></li>
     <li><a href="#devs">Developers</a></li>
+    <li><a href="#editor-sdk">Editor SDK</a></li>
     <li><a href="#singularity">Singularity</a></li>
     <li><a href="#ai-combat">AI Combat</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -1239,6 +1240,103 @@ a:hover{filter:drop-shadow(0 0 8px rgba(167,139,250,1)) drop-shadow(0 0 20px rgb
 
 <span class="cm">// Mint a kill as an NFT</span>
 <span class="fn">ogengine_nft_mint</span><span class="pun">(</span>avatar<span class="pun">.</span>id<span class="pun">,</span> <span class="str">"boss_kill_baron"</span><span class="pun">);</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR EDITOR DEVELOPERS -->
+<section id="editor-sdk" style="background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,229,255,.03),rgba(167,139,250,.03),rgba(0,0,0,0))">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <div class="section-kicker">FOR MAP EDITOR DEVELOPERS</div>
+      <h2>Add OASIS to Any Map Editor</h2>
+      <p>The <strong>OGEditor SDK</strong> is a C# NativeAOT library (<code style="color:var(--gold);font-family:'Share Tech Mono',monospace">OGEditorClient.dll</code>) exporting a pure C ABI — giving any C or C++ map editor plugin live access to the full OASIS ecosystem: cross-game asset catalog, portal registry, quest binding, STAR API sync, and map sidecar I/O. No .NET runtime required in your editor.</p>
+    </div>
+    <div class="dev-grid reveal">
+      <div class="dev-text">
+        <h2>Powered by <span>OGEditorClient.dll</span></h2>
+        <p>Load the DLL at startup with <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">LoadLibrary</code> / <code style="color:var(--cyan);font-family:'Share Tech Mono',monospace">dlopen</code>, call <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">ogeditor_*</code> functions — and gain live access to the OASIS cross-game asset catalog, portal pair management, quest binding, and STAR API sync. UltimateDoomBuilder references OGEditorSDK directly in C# as the primary host. All other editors load <code style="color:var(--gold);font-family:'Share Tech Mono',monospace">OGEditorClient.dll</code> via the C ABI — the same DLL, five editors, all 20 OGames.</p>
+
+        <div style="margin-top:1.4rem;overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:.82rem;font-family:'Share Tech Mono',monospace">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(167,139,250,.35)">
+                <th style="text-align:left;padding:.5rem .7rem;color:var(--gold);letter-spacing:.07em;font-weight:700">EDITOR</th>
+                <th style="text-align:left;padding:.5rem .7rem;color:var(--gold);letter-spacing:.07em;font-weight:700">OGAMES COVERED</th>
+                <th style="text-align:left;padding:.5rem .7rem;color:var(--gold);letter-spacing:.07em;font-weight:700">ENGINE FAMILY</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+                <td style="padding:.5rem .7rem;color:var(--cyan)">UltimateDoomBuilder</td>
+                <td style="padding:.5rem .7rem;color:#a8bfd8">ODOOM · OHeretic · OHexen · OStrife · ODoom64</td>
+                <td style="padding:.5rem .7rem;color:#6a80a8">Doom WAD</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+                <td style="padding:.5rem .7rem;color:var(--cyan)">TrenchBroom</td>
+                <td style="padding:.5rem .7rem;color:#a8bfd8">OQuake · OQuake2</td>
+                <td style="padding:.5rem .7rem;color:#6a80a8">Quake BSP</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+                <td style="padding:.5rem .7rem;color:var(--cyan)">NetRadiant</td>
+                <td style="padding:.5rem .7rem;color:#a8bfd8">OQuake3 · ORtCW</td>
+                <td style="padding:.5rem .7rem;color:#6a80a8">Q3 / idTech3</td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+                <td style="padding:.5rem .7rem;color:var(--cyan)">DarkRadiant</td>
+                <td style="padding:.5rem .7rem;color:#a8bfd8">ODOOM3 · ODOOM3-BFG</td>
+                <td style="padding:.5rem .7rem;color:#6a80a8">idTech4</td>
+              </tr>
+              <tr>
+                <td style="padding:.5rem .7rem;color:var(--cyan)">Mapster32</td>
+                <td style="padding:.5rem .7rem;color:#a8bfd8">ODuke3D · OBlood · OExhumed · OShadowWarrior</td>
+                <td style="padding:.5rem .7rem;color:#6a80a8">Build engine</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tech-pills" style="margin-top:1.4rem">
+          <span class="tech-pill">C# NATIVE AOT</span>
+          <span class="tech-pill">PURE C ABI</span>
+          <span class="tech-pill">5 EDITORS</span>
+          <span class="tech-pill">ALL 20 OGAMES</span>
+          <span class="tech-pill">STAR API</span>
+          <span class="tech-pill">PORTAL REGISTRY</span>
+          <span class="tech-pill">WIN · LINUX · macOS</span>
+        </div>
+        <div class="dev-links">
+          <a href="https://github.com/NextGenSoftwareUK/UltimateDoomBuilder/releases" target="_blank" rel="noopener" class="btn-primary">DOWNLOAD OGEDITOR SDK</a>
+          <a href="https://github.com/NextGenSoftwareUK/OASIS/blob/master/OASIS%20Omniverse/Docs/OGEDITOR_INTEGRATION_ROADMAP.md" target="_blank" rel="noopener" class="btn-outline-cyan">INTEGRATION GUIDE</a>
+        </div>
+      </div>
+      <div>
+        <pre class="code-block"><span class="cm">// Link OGEditorClient.dll — C# Native AOT, pure C ABI</span>
+<span class="kw">#include</span> <span class="str">"OGEditorClient.h"</span>
+
+<span class="cm">// Connect to STAR API — live asset catalog, portal registry, quests</span>
+<span class="fn">ogeditor_star_connect</span><span class="pun">(</span><span class="str">"https://api.starnet.oasisomniverse.one"</span><span class="pun">,</span> jwt<span class="pun">);</span>
+
+<span class="cm">// Browse all OASIS assets for any OGame</span>
+<span class="kw">OGAsset</span> assets<span class="pun">[</span>256<span class="pun">];</span>
+<span class="kw">int</span> n <span class="pun">=</span> <span class="fn">ogeditor_get_assets_for_game</span><span class="pun">(</span><span class="str">"ODOOM3"</span><span class="pun">,</span> assets<span class="pun">,</span> 256<span class="pun">);</span>
+
+<span class="cm">// Resolve a native classname → OASIS thing type</span>
+<span class="kw">int</span> thing <span class="pun">=</span> <span class="fn">ogeditor_get_thing_type</span><span class="pun">(</span><span class="str">"OQUAKE"</span><span class="pun">,</span> <span class="str">"monster_shambler"</span><span class="pun">);</span>
+
+<span class="cm">// Register a cross-game portal — ODOOM E1M1 → OQuake e1m1</span>
+<span class="fn">ogeditor_register_portal_pair</span><span class="pun">(</span>
+    <span class="str">"ODOOM"</span><span class="pun">,</span>  <span class="str">"E1M1"</span><span class="pun">,</span>  <span class="str">"exit_to_quake"</span><span class="pun">,</span>
+    <span class="str">"OQUAKE"</span><span class="pun">,</span> <span class="str">"e1m1"</span><span class="pun">,</span>  512.f<span class="pun">,</span> 0.f<span class="pun">,</span> 64.f<span class="pun">,</span> 90.f
+<span class="pun">);</span>
+
+<span class="cm">// List quests from STAR API for the Quest Binder panel</span>
+<span class="kw">OGQuest</span> quests<span class="pun">[</span>64<span class="pun">];</span>
+<span class="kw">int</span> qn <span class="pun">=</span> <span class="fn">ogeditor_get_quests_json</span><span class="pun">(</span><span class="str">"ODOOM"</span><span class="pun">,</span> quests<span class="pun">,</span> 64<span class="pun">);</span>
+
+<span class="cm">// Save the OASIS sidecar alongside your map file</span>
+<span class="fn">ogeditor_sidecar_save</span><span class="pun">(</span><span class="str">"/maps/E1M1.wad"</span><span class="pun">);</span></pre>
       </div>
     </div>
   </div>
