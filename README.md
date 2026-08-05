@@ -18,14 +18,37 @@ OGEngine is the shared game runtime powering all OASIS-connected worlds. It prov
 
 ## Games Built on OGEngine
 
-| Game | Description |
-|---|---|
-| [Our World](../OurWorldSite) | Flagship AR/VR metaverse |
-| [One World](../OneWorldSite) | Full 3D MMORPG sequel (Unreal Engine 5) |
-| [ODOOM](../ODOOMSite) | OASIS-powered classic Doom |
-| [OQUAKE](../OQuakeSite) | OASIS-powered Quake |
-| [Shadow Fighter](../ShadowFighterSite) | Fighting game trilogy |
-| [Snake 3000](../Snake3000Site) | The original OASIS game |
+### Live
+
+| Game | Base engine | Description |
+|---|---|---|
+| Our World | Our World engine | Flagship AR/VR metaverse — the real world is the level |
+| ODOOM | UZDoom (GZDoom fork) | OASIS-powered classic Doom |
+| OQUAKE | vkQuake | OASIS-powered Quake |
+
+### Generation 1 — In Development (FPS)
+
+| Game | Base engine | Status |
+|---|---|---|
+| ODOOM3 | dhewm3 (idTech4) | In development |
+| ODOOM3-BFG | RBDOOM-3-BFG | In development |
+| ODuke3D | EDuke32 | In development |
+| ODuke3D-RT | Duke-RT (Raze fork, Vulkan RT) | In development |
+| OWolf3D | ECWolf | In development |
+| OQuake2 | Yamagi Quake II | In development |
+| OQuake2-RTX | Q2 RTX | In development |
+| OQuake3 | Quake3e | In development |
+| OHeretic | UZDoom (GZDoom fork) | In development |
+| OHexen | UZDoom (GZDoom fork) | In development |
+| OShadowWarrior | Raze | In development |
+| OShadowWarriorRT | Duke-RT (Raze fork, Vulkan RT) | In development |
+
+### Generation 2 — Planned
+
+| Game | Base engine | Status |
+|---|---|---|
+| OMorrowind | OpenMW | Integration files complete |
+| OMineCraft | Minetest / Fabric mod | Planned |
 
 ## Tech Stack
 
